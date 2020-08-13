@@ -17,8 +17,6 @@ class FeatureContext implements Context
 
     /**
      * @Given an user is requesting :url
-     * @param string $endpoint
-     * @param string $method
      */
     public function anUserIsRequesting(string $endpoint, string $method = Request::METHOD_GET): void
     {
@@ -35,7 +33,6 @@ class FeatureContext implements Context
 
     /**
      * @Then a response status code should be :status
-     * @param int $status
      */
     public function aResponseStatusCodeShouldBe(int $status): void
     {

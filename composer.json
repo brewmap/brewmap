@@ -24,6 +24,7 @@
     "nunomaduro/collision": "^4.1",
     "phpunit/phpunit": "^8.5",
     "psalm/plugin-laravel": "^1.3",
+    "symplify/easy-coding-standard": "^8.2",
     "vimeo/psalm": "^3.13"
   },
   "config": {
@@ -53,6 +54,10 @@
       "@php artisan package:discover --ansi"
     ],
     "psalm": "./vendor/bin/psalm",
-    "test": "./vendor/bin/behat"
+    "behat": "./vendor/bin/behat",
+    "ecs": "./vendor/bin/ecs check",
+    "check": [
+      "composer psalm", "composer behat", "composer ecs"
+    ]
   }
 }
