@@ -19,6 +19,9 @@ class RedirectIfAuthenticated
         $this->manager = $manager;
     }
 
+    /**
+     * @throws UserAuthenticatedException
+     */
     public function handle(Request $request, Closure $next, string $guard = null): Response
     {
         if ($this->manager->guard($guard)->check()) {
