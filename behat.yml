@@ -1,0 +1,11 @@
+default:
+
+  extensions:
+    KrzysztofRewak\Larahat\BehatExtension:
+
+  suites:
+    features:
+      contexts:
+        - Brewmap\Testing\FeatureContext
+      paths:
+        - features

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<psalm
+        errorLevel="8"
+        resolveFromConfigFile="true"
+        checkForThrowsDocblock="true"
+        ensureArrayStringOffsetsExist="true"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="https://getpsalm.org/schema/config"
+        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+>
+    <projectFiles>
+        <directory name="app"/>
+        <directory name="bootstrap"/>
+        <directory name="config"/>
+        <directory name="database"/>
+        <directory name="public"/>
+        <directory name="routes"/>
+        <ignoreFiles>
+            <directory name="vendor"/>
+        </ignoreFiles>
+    </projectFiles>
+    <plugins>
+        <pluginClass class="Psalm\LaravelPlugin\Plugin"/>
+    </plugins>
+    <issueHandlers>
+        <ParamNameMismatch>
+            <errorLevel type="suppress">
+                <file name="app/User.php"/>
+            </errorLevel>
+        </ParamNameMismatch>
+        <MissingConstructor>
+            <errorLevel type="suppress">
+                <directory name="app/Testing"/>
+            </errorLevel>
+        </MissingConstructor>
+        <MissingThrowsDocblock>
+            <errorLevel type="suppress">
+                <directory name="app/Testing"/>
+            </errorLevel>
+        </MissingThrowsDocblock>
+    </issueHandlers>
+</psalm>
