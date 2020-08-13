@@ -1,5 +1,5 @@
 ## Development commands
-### Envirnoment
+### Environment
 Run application:
 ```shell script
 docker-compose up -d web php
@@ -33,4 +33,12 @@ Like that:
 docker-compose run -w /application -u "$(id -u):$(id -g)" composer -V
 docker-compose run -w /application -u "$(id -u):$(id -g)" composer show
 docker-compose run -w /application -u "$(id -u):$(id -g)" composer dump-autoload
+```
+
+#### Services
+You can run Psalm (for static code analysis), Behat (for tests) and ECS (for code style) via Composer:
+```shell script
+docker-compose run -w /application -u "$(id -u):$(id -g)" composer psalm
+docker-compose run -w /application -u "$(id -u):$(id -g)" composer behat
+docker-compose run -w /application -u "$(id -u):$(id -g)" composer ecs
 ```
