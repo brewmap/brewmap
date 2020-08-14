@@ -54,7 +54,7 @@
       "@php artisan package:discover --ansi"
     ],
     "psalm": "./vendor/bin/psalm",
-    "behat": "./vendor/bin/behat",
+    "behat": "./vendor/bin/behat --format=progress",
     "ecs": "./vendor/bin/ecs check",
     "check": [
       "composer psalm", "composer behat", "composer ecs"
