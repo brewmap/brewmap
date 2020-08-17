@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    protected $namespace = "Brewmap\Http\Controllers";
-
     public function map(): void
     {
         $this->mapApiRoutes();
@@ -21,14 +19,12 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix("api")
             ->middleware("api")
-            ->namespace($this->namespace)
             ->group(base_path("routes/api.php"));
     }
 
     protected function mapWebRoutes(): void
     {
         Route::middleware("web")
-            ->namespace($this->namespace)
             ->group(base_path("routes/web.php"));
     }
 }

@@ -6,6 +6,6 @@ default:
   suites:
     features:
       contexts:
-        - Brewmap\Testing\FeatureContext
+        - Brewmap\Testing\InternalHttpRequesting
       paths:
         - features

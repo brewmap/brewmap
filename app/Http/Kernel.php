@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Brewmap\Http;
 
+use Brewmap\Http\Middleware\Localize;
 use Brewmap\Http\Middleware\RedirectIfAuthenticated;
 use Brewmap\Http\Middleware\TrimStrings;
 use Brewmap\Http\Middleware\TrustProxies;
@@ -30,6 +31,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 class Kernel extends HttpKernel
 {
     protected $middleware = [
+        Localize::class,
         TrustProxies::class,
         HandleCors::class,
         CheckForMaintenanceMode::class,
