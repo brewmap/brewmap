@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use PhpCsFixer\Fixer\CastNotation\CastSpacesFixer;
 use PhpCsFixer\Fixer\ClassNotation\ClassAttributesSeparationFixer;
+use PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer;
 use PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer;
 use PhpCsFixer\Fixer\StringNotation\SingleQuoteFixer;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -20,6 +21,7 @@ $sets = [
 $skipped = [
     SingleQuoteFixer::class => null,
     ClassAttributesSeparationFixer::class => null,
+    NotOperatorWithSuccessorSpaceFixer::class => null,
 ];
 
 $rules = [
@@ -35,9 +37,9 @@ return static function (ContainerConfigurator $containerConfigurator) use ($sets
     $parameters->set(Option::PATHS, ["app", "config", "database", "routes"]);
 
     $services = $containerConfigurator->services();
-    foreach($rules as $rule => $configuration) {
+    foreach ($rules as $rule => $configuration) {
         $service = $services->set($rule);
-        if($configuration) {
+        if ($configuration) {
             $service->call("configure", [$configuration]);
         }
     }

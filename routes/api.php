@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
-use Brewmap\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use Brewmap\Http\Controllers\API\ApplicationController;
+use Illuminate\Routing\Router;
 
-Route::middleware("auth:api")->get("/user", fn (Request $request): User => $request->user());
+/** @var Router $router */
+$router = app(Router::class);
+
+$router->get("/", ApplicationController::class);

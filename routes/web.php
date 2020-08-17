@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
-use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Route;
+use Brewmap\Http\Controllers\HomeController;
+use Illuminate\Routing\Router;
 
-Route::get("/", fn (): View => view("welcome"));
+/** @var Router $router */
+$router = app(Router::class);
+
+$router->get("/", HomeController::class);
