@@ -25,20 +25,20 @@ docker exec -it -u "$(id -u):$(id -g)" brewmap-php sh
 ### Composer
 Run Composer (with command instead of `*`):
 ```shell script
-docker-compose run -u "$(id -u):$(id -g)" composer *
+docker-compose run -u "$(id -u):$(id -g)" php composer *
 ```
 
 Like that:
 ```shell script
-docker-compose run -u "$(id -u):$(id -g)" composer -V
-docker-compose run -u "$(id -u):$(id -g)" composer show
-docker-compose run -u "$(id -u):$(id -g)" composer dump-autoload
+docker-compose run -u "$(id -u):$(id -g)" php composer -V
+docker-compose run -u "$(id -u):$(id -g)" php composer show
+docker-compose run -u "$(id -u):$(id -g)" php composer dump-autoload
 ```
 
 #### Services
 You can run Psalm (for static code analysis), Behat (for tests) and ECS (for code style) via Composer:
 ```shell script
-docker-compose run -w /application -u "$(id -u):$(id -g)" composer psalm
-docker-compose run -w /application -u "$(id -u):$(id -g)" composer behat
-docker-compose run -w /application -u "$(id -u):$(id -g)" composer ecs
+docker-compose run -w /application -u "$(id -u):$(id -g)" php composer psalm
+docker-compose run -w /application -u "$(id -u):$(id -g)" php composer behat
+docker-compose run -w /application -u "$(id -u):$(id -g)" php composer ecs
 ```
