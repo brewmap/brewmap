@@ -1,10 +1,20 @@
-## Development commands
-### Environment
-Run application:
+## Installation
+Create `.env` file based on `.env.example`:
 ```shell script
-docker-compose up -d web php
+cp .env.example .env
 ```
 
+Run containers:
+```shell script
+docker-compose up -d --build
+```
+
+Generate application key:
+```shell script
+php artisan key:generate
+```
+
+## Development commands
 ### PHP
 Run PHP (with command instead of `*`):
 ```shell script

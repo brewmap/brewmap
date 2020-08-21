@@ -21,7 +21,39 @@ services:
       - .:/application
       - ./environment/nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - "13000:80"
+      - "${EXT_WEBSERVER_PORT}:80"
     depends_on:
       - php
     restart: always
+
+  database:
+    container_name: brewmap-database
+    image: mysql:8.0.21
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "${EXT_DATABASE_PORT}:3306"
+    depends_on:
+      - php
+    restart: always
+
+  redis: 
+    container_name: brewmap-redis
+    image: redis:6.0.6-alpine
+    volumes:
+      - redis-data:/var/lib/redis
+      - ./environment/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "${EXT_REDIS_PORT}:6379"
+    depends_on:
+      - php
+    restart: always
+    
+volumes:
+  mysql-data:
+  redis-data:
