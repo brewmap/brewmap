@@ -6,6 +6,11 @@ Feature: Test if homepage is rendered correctly
     When a request is sent
     Then a response status code should be "200"
 
+  Scenario: User is requesting Nova dashboard
+    Given an user is requesting "/dashboard"
+    When a request is sent
+    Then a response status code should be "302"
+
   Scenario: User is requesting non-existing page
     Given an user is requesting "/test"
     When a request is sent

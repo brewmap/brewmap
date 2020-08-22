@@ -1,4 +1,4 @@
-name: PHP Composer
+name: Behaviour, code and style test
 
 on:
   push:
@@ -16,6 +16,9 @@ jobs:
 
     - name: Validate composer.json and composer.lock
       run: composer validate
+
+    - name: Authenticating Nova in Continuous Integration
+      run: composer config http-basic.nova.laravel.com "${{ secrets.novaUsername }}" "${{ secrets.novaPassword }}"
 
     - name: Cache Composer packages
       id: composer-cache

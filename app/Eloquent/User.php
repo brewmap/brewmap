@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Brewmap;
+namespace Brewmap\Eloquent;
 
 use Illuminate\Foundation\Auth\User as LaravelUser;
 use Illuminate\Notifications\Notifiable;

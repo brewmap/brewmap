@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Brewmap\Eloquent\User;
+
 return [
     "defaults" => [
         "guard" => "web",
@@ -21,7 +23,7 @@ return [
     "providers" => [
         "users" => [
             "driver" => "eloquent",
-            "model" => Brewmap\User::class,
+            "model" => User::class,
         ],
     ],
     "passwords" => [

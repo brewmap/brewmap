@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Brewmap\User;
+use Brewmap\Eloquent\User;
 use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Str;

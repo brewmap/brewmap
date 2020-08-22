@@ -1,11 +1,17 @@
 {
   "name": "brewmap/brewmap",
   "type": "project",
-  "description": " Laravel-based application for brewery tourism social media platform ",
+  "description": "Laravel-based application for brewery tourism social media platform ",
   "keywords": [
     "laravel"
   ],
   "license": "MIT",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://nova.laravel.com"
+    }
+  ],
   "require": {
     "php": "^7.4",
     "ext-pdo": "*",
@@ -14,7 +20,8 @@
     "fruitcake/laravel-cors": "^2.0",
     "guzzlehttp/guzzle": "^6.3",
     "laravel/framework": "^7.24",
-    "laravel/tinker": "^2.0"
+    "laravel/tinker": "^2.0",
+    "laravel/nova": "~3.0"
   },
   "require-dev": {
     "facade/ignition": "^2.0",
@@ -57,7 +64,9 @@
     "behat": "./vendor/bin/behat --format=progress",
     "ecs": "./vendor/bin/ecs check",
     "check": [
-      "composer psalm", "composer behat", "composer ecs"
+      "composer psalm",
+      "composer behat",
+      "composer ecs"
     ]
   }
 }
