@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Brewmap\Providers\NovaServiceProvider;
 use Brewmap\Providers\RouteServiceProvider;
 use Illuminate\Auth\AuthServiceProvider;
 use Illuminate\Auth\Passwords\PasswordResetServiceProvider;
@@ -62,5 +63,6 @@ return [
         ValidationServiceProvider::class,
         ViewServiceProvider::class,
         RouteServiceProvider::class,
+        NovaServiceProvider::class,
     ],
 ];
