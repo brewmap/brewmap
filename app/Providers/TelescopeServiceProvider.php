@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Brewmap\Providers;
 
+use Brewmap\Eloquent\User;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\Telescope;
 use Laravel\Telescope\TelescopeApplicationServiceProvider;
-use Brewmap\Eloquent\User;
 
 class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
 {
@@ -29,7 +31,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         });
     }
 
-    protected function hideSensitiveRequestDetails()
+    protected function hideSensitiveRequestDetails(): void
     {
         if ($this->app->environment('local')) {
             return;
