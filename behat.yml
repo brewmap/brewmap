@@ -4,8 +4,14 @@ default:
     KrzysztofRewak\Larahat\BehatExtension:
 
   suites:
-    features:
+    http:
       contexts:
         - Brewmap\Testing\InternalHttpRequesting
       paths:
-        - features
+        - features/http
+
+    eloquent:
+      contexts:
+        - Brewmap\Testing\Eloquent\Users
+      paths:
+        - features/eloquent
