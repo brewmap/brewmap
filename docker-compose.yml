@@ -33,9 +33,13 @@ services:
       - mysql-data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${DB_DATABASE}
       - MYSQL_USER=${DB_USERNAME}
       - MYSQL_PASSWORD=${DB_PASSWORD}
+    entrypoint:
+        sh -c "
+          echo 'CREATE DATABASE IF NOT EXISTS ${DB_DATABASE}; GRANT ALL PRIVILEGES ON ${DB_DATABASE}.* TO '\''${DB_USERNAME}'\''@'\''%'\'';' > /docker-entrypoint-initdb.d/init.sql;
+          echo 'CREATE DATABASE IF NOT EXISTS "${DB_DATABASE}_testing"; GRANT ALL PRIVILEGES ON "${DB_DATABASE}_testing".* TO '\''${DB_USERNAME}'\''@'\''%'\'';' >> /docker-entrypoint-initdb.d/init.sql;
+          /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci"
     ports:
       - "${EXT_DATABASE_PORT}:3306"
     depends_on:
