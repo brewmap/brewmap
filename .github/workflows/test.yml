@@ -35,7 +35,7 @@ jobs:
       run:  docker-compose run php composer behat
 
     - name: Run code style checker
-      run:  docker-compose run phpc omposer ecs
+      run:  docker-compose run php composer ecs
 
     - name: Run code static analysis
       run:  docker-compose run php composer psalm
