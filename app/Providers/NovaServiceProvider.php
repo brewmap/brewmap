@@ -18,7 +18,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         $tools = [];
 
-        if (config('telescope.enabled')) {
+        if (config("telescope.enabled")) {
             $tools[] = new TelescopeLink();
         }
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Brewmap\Providers\NovaServiceProvider;
 use Brewmap\Providers\RouteServiceProvider;
+use Brewmap\Providers\TelescopeServiceProvider;
 use Illuminate\Auth\AuthServiceProvider;
 use Illuminate\Auth\Passwords\PasswordResetServiceProvider;
 use Illuminate\Broadcasting\BroadcastServiceProvider;
@@ -64,5 +65,6 @@ return [
         ViewServiceProvider::class,
         RouteServiceProvider::class,
         NovaServiceProvider::class,
+        TelescopeServiceProvider::class,
     ],
 ];
