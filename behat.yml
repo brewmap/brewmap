@@ -2,6 +2,7 @@ default:
 
   extensions:
     KrzysztofRewak\Larahat\BehatExtension:
+      env: ".env.behat"
 
   suites:
     http:

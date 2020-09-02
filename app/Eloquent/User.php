@@ -28,7 +28,11 @@ use Illuminate\Notifications\Notifiable;
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword, MustVerifyEmail, Notifiable;
+    use Authenticatable;
+    use Authorizable;
+    use CanResetPassword;
+    use MustVerifyEmail;
+    use Notifiable;
 
     protected $casts = ["email_verified_at" => "datetime"];
     protected $hidden = ["password", "remember_token"];

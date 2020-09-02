@@ -5,7 +5,7 @@ RUN apk update && apk upgrade \
 
 ARG COMPOSER_VERSION
 ENV COMPOSER_HOME=/application/.composer
-RUN curl -sS https://getcomposer.org/installer | php -- --version=${COMPOSER_VERSION} --install-dir=/usr/local/bin --filename=composer 
+RUN curl -sS https://getcomposer.org/installer | php -- --version=${COMPOSER_VERSION} --install-dir=/usr/local/bin --filename=composer
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql json
 
