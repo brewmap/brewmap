@@ -1,0 +1,41 @@
+name: Behaviour, code and style test
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Validate composer.json and composer.lock
+      run:  composer validate
+    
+    - name: Prepare environments for tests
+      run: ./.github/scripts/decrypt.sh
+      env:
+        decryptKey: ${{ secrets.decryptKey }}  
+
+    - name: Build PHP & Database containers
+      run:  docker-compose -f docker-compose.yml up -d --build php database
+  
+    - name: Authenticating Nova in Continuous Integration
+      run:  docker-compose run php composer config http-basic.nova.laravel.com "${{ secrets.novaUsername }}" "${{ secrets.novaPassword }}"
+    
+    - name: Install dependencies
+      run:  docker-compose run php composer install --prefer-dist --no-progress --no-suggest
+
+    - name: Run test suite
+      run:  docker-compose run php composer behat
+
+    - name: Run code style checker
+      run:  docker-compose run php composer ecs
+
+    - name: Run code static analysis
+      run:  docker-compose run php composer psalm
