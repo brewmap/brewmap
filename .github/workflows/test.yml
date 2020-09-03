@@ -23,7 +23,7 @@ jobs:
         decryptKey: ${{ secrets.decryptKey }}  
 
     - name: Build PHP & Database containers
-      run:  docker-compose -f docker-compose.yml up -d --build php database
+      run:  docker-compose -f docker-compose.yml up -d --build
   
     - name: Authenticating Nova in Continuous Integration
       run:  docker-compose run php composer config http-basic.nova.laravel.com "${{ secrets.novaUsername }}" "${{ secrets.novaPassword }}"
