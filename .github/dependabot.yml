@@ -6,5 +6,9 @@ updates:
       interval: "daily"
       time: "07:00"
       timezone: "Europe/Warsaw"
+    target-branch: "develop"
+    labels:
+      - "bot"
+      - "environment"
     ignore:
       - dependency-name: "laravel/nova"
