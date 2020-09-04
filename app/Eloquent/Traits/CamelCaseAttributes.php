@@ -6,7 +6,7 @@ namespace Brewmap\Eloquent\Traits;
 
 use Illuminate\Support\Str;
 
-trait CamelcasedAttributes
+trait CamelCaseAttributes
 {
     public function getAttribute($key)
     {
