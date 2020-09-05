@@ -16,7 +16,17 @@ class NewUsers extends Value
         return $this->count($request, User::class);
     }
 
-    public function uriKey()
+    public function ranges(): array
+    {
+        return [
+            "TODAY" => "Today",
+            "MTD" => "Month To Date",
+            "QTD" => "Quarter To Date",
+            "YTD" => "Year To Date",
+        ];
+    }
+
+    public function uriKey(): string
     {
         return "new-users";
     }

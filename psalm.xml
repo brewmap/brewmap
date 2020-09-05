@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <psalm
+        cacheDirectory=".psalm"
         errorLevel="8"
         resolveFromConfigFile="true"
         checkForThrowsDocblock="true"
