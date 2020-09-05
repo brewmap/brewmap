@@ -30,6 +30,8 @@ use Illuminate\View\ViewServiceProvider;
 
 return [
     "name" => env("APP_NAME", "Laravel"),
+    "namespace" => 'Brewmap',
+    "model_namespace" => 'Eloquent',
     "env" => env("APP_ENV", "production"),
     "debug" => (bool)env("APP_DEBUG", false),
     "url" => env("APP_URL", "http://localhost"),

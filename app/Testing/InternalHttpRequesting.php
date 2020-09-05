@@ -25,6 +25,34 @@ class InternalHttpRequesting implements Context
     }
 
     /**
+     * @Given an user is requesting :url using :method
+     */
+    public function anUserIsRequestUsingMethod(string $endpoint, string $method): void
+    {
+        $this->anUserIsRequesting($endpoint, $method);
+    }
+
+    /**
+     * @Given required :amount :class object/objects is/are already existing
+     */
+    public function requiredObjectsAreAlreadyExisting(int $amount, string $class): void
+    {
+        factory(config('app.namespace') . '\\' . config('app.model_namespace') . '\\' . $class, $amount)
+            ->create()
+            ->each(function ($object): void {
+                $object->save();
+            });
+    }
+
+    /**
+     * @Given request body contains :key equal :value
+     */
+    public function requestBodyContains(string $key, string $value): void
+    {
+        $this->request[$key] = $value;
+    }
+
+    /**
      * @Given custom request headers are defined:
      */
     public function customRequestHeadersAreDefined(TableNode $table): void
@@ -56,7 +84,7 @@ class InternalHttpRequesting implements Context
     public function responseBodyShouldContain(TableNode $table): void
     {
         $response = $this->getResponseContent();
-
+        
         foreach ($table as $row) {
             Assert::assertEquals($response[$row["key"]], $row["value"]);
         }

@@ -1,5 +1,4 @@
 default:
-
   extensions:
     KrzysztofRewak\Larahat\BehatExtension:
       env: ".env.behat"
@@ -16,3 +15,9 @@ default:
         - Brewmap\Testing\Eloquent\Users
       paths:
         - features/eloquent
+
+    API:
+      contexts:
+        - Brewmap\Testing\InternalHttpRequesting
+      paths:
+        - features/API
