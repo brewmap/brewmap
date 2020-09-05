@@ -11,11 +11,14 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthenticationService
 {
+    /**
+     * @throws HttpResponseException
+     */
     public function login(Request $request): string
     {
         $user = User::where("email", $request->email)->first();
 
-        if ($user === null ||!Hash::check($request->password, $user->password)) {
+        if ($user === null || !Hash::check($request->password, $user->password)) {
             throw new HttpResponseException(response()->json(["message" => __("auth.credentialsMismatch")], 401));
         }
         return $user->createToken($user->email)->plainTextToken;
