@@ -37,7 +37,7 @@ class InternalHttpRequesting implements Context
      */
     public function requiredObjectsAreAlreadyExisting(int $amount, string $class): void
     {
-        factory(config('app.namespace') . '\\' . config('app.model_namespace') . '\\' . $class, $amount)
+        factory(config("app.namespace") . "\\" . config("app.model_namespace") . "\\" . $class, $amount)
             ->create()
             ->each(function ($object): void {
                 $object->save();

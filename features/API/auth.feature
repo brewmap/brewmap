@@ -1,5 +1,5 @@
 @API @Auth
-Feature: Test an ability to login 
+Feature: Test an ability to login
 
   Scenario: User is attempting to log in with proper credentials
     Given an user is requesting "/api/login" using "POST"
@@ -19,4 +19,3 @@ Feature: Test an ability to login
     And request body contains "password" equal "passworD"
     When a request is sent
     Then a response status code should be "401"
-    

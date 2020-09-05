@@ -14,6 +14,6 @@ class AuthenticationController extends Controller
     public function login(LoginUserRequest $request, AuthenticationService $authenticationService) : JsonResponse
     {
         $token = $authenticationService->login($request);
-        return response()->json(['token' => $token]);
+        return response()->json(["token" => $token]);
     }
 }

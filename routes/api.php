@@ -11,4 +11,4 @@ $router = app(Router::class);
 
 $router->get("/", ApplicationController::class);
 
-$router->post('/login', [AuthenticationController::class, 'login']);
+$router->post("/login", [AuthenticationController::class, "login"]);
