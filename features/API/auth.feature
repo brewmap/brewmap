@@ -19,3 +19,4 @@ Feature: Test an ability to login
     And request body contains "password" equal "passworD"
     When a request is sent
     Then a response status code should be "401"
+    

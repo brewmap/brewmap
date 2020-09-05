@@ -28,7 +28,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property Carbon $updatedAt
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
-{    
+{
     use Authenticatable;
     use Authorizable;
     use CanResetPassword;
