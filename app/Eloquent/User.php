@@ -14,6 +14,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @property string|null $id
@@ -27,10 +28,11 @@ use Illuminate\Notifications\Notifiable;
  * @property Carbon $updatedAt
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
-{
+{    
     use Authenticatable;
     use Authorizable;
     use CanResetPassword;
+    use HasApiTokens;
     use MustVerifyEmail;
     use Notifiable;
 
