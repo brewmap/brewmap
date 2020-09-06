@@ -38,7 +38,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     protected $casts = ["email_verified_at" => "datetime"];
     protected $hidden = ["password", "remember_token"];
-    protected $fillable = ["email", "password"];
+    protected $fillable = ["email", "password", "name"];
 
     public function profile(): HasOne
     {

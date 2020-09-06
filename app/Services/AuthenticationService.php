@@ -23,4 +23,11 @@ class AuthenticationService
         }
         return $user->createToken($user->email)->plainTextToken;
     }
+
+    public function register(array $input): void
+    {
+        $input["password"] = Hash::make($input["password"]);
+        $user = User::create($input);
+        $user->save();
+    }
 }
