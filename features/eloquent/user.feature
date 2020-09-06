@@ -1,6 +1,10 @@
 @eloquent
 Feature: Test if users are working correctly
 
+  Scenario: When user is created, UUID should be always assigned
+    When there is an user created
+    Then it should have UUID-formatted id
+
   Scenario: When user is created, profile should be always assigned
     When there is an user created:
       | id                                   | email             |
