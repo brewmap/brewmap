@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Brewmap\Testing;
+namespace Brewmap\Testing\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
