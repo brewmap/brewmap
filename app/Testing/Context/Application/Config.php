@@ -33,7 +33,7 @@ class Config implements Context
     /**
      * @Given application is booted with config:
      */
-    public function applicationIsIBootedWithConfig(array $config): void
+    public function applicationIsBootedWithConfig(array $config): void
     {
         $laravelBooter = new LaravelBooter();
         $laravelBooter->setConfigOverrides($config);
