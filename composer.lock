@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b00142a037727a1ab5aeb335b303434c",
+    "content-hash": "4b0f540f6048d4eef82b863e126d9499",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7264,6 +7264,51 @@
             ],
             "description": "Extremly simple Laravel Behat extension",
             "time": "2020-04-03T11:45:17+00:00"
+        },
+        {
+            "name": "krzysztofrewak/php-cs-double-quote-fixer",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/krzysztofrewak/php-cs-double-quote-fixer.git",
+                "reference": "55c4a909db63f45d8a6e2e7c8c92dcef489cf052"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/krzysztofrewak/php-cs-double-quote-fixer/zipball/55c4a909db63f45d8a6e2e7c8c92dcef489cf052",
+                "reference": "55c4a909db63f45d8a6e2e7c8c92dcef489cf052",
+                "shasum": ""
+            },
+            "require": {
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "php": "^7.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "KrzysztofRewak\\PhpCsFixer\\DoubleQuoteFixer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Krzysztof Rewak",
+                    "homepage": "https://github.com/krzysztofrewak/"
+                },
+                {
+                    "name": "Marcel Pociot",
+                    "homepage": "https://github.com/mpociot/"
+                }
+            ],
+            "description": "Convert single quotes to double quotes for simple strings.",
+            "keywords": [
+                "double quotes",
+                "php-cs-fixer"
+            ],
+            "time": "2020-09-07T14:21:10+00:00"
         },
         {
             "name": "mockery/mockery",
