@@ -10,6 +10,6 @@ class HomeController extends Controller
 {
     public function __invoke(): View
     {
-        return view("welcome");
+        return view("home");
     }
 }
