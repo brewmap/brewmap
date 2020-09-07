@@ -13,13 +13,13 @@ class Config implements Context
     /**
      * @Transform table:config,value
      */
-    public function castConfigBoolValues(TableNode $configTable)
+    public function castConfigBoolValues(TableNode $configTable): array
     {
         $config = [];
 
         foreach ($configTable as $row) {
-            $key = $row['config'];
-            $value = $row['value'];
+            $key = $row["config"];
+            $value = $row["value"];
 
             if (in_array($value, ["true", "false"], true)) {
                 $value = $value === "true";

@@ -22,9 +22,9 @@ class LaravelBooter
         $app->loadEnvironmentFrom($this->environmentFile);
 
         $app->afterBootstrapping(LoadConfiguration::class, function (Application $app): void {
-            $app['env'] = $this->environmentType;
+            $app["env"] = $this->environmentType;
             foreach ($this->configOverrides as $key => $value) {
-                $app->make('config')->set($key, $value);
+                $app->make("config")->set($key, $value);
             }
         });
 
