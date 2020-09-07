@@ -32,6 +32,7 @@
         <PropertyNotSetInConstructor>
             <errorLevel type="suppress">
                 <directory name="app/Nova/Metrics"/>
+                <directory name="app/Nova/Tools"/>
             </errorLevel>
         </PropertyNotSetInConstructor>
         <MissingConstructor>
