@@ -13,7 +13,7 @@ class BehatExtension extends Extension
     {
         $laravelBooter = new LaravelBooter();
         $laravelBooter->setBasePath($container->getParameter("paths.base"));
-        $laravelBooter->setEnvironmentFile($config["env"]);
+        $laravelBooter->setEnvironmentFile($config["env"] ?? ".env.behat");
         $laravelBooter->boot();
     }
 }

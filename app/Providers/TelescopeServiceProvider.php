@@ -16,32 +16,35 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
     {
         $this->hideSensitiveRequestDetails();
 
-        Telescope::filter(function (IncomingEntry $entry): bool {
-            if ($this->app->environment('local')) {
-                return true;
-            }
+        Telescope::filter(
+            function (IncomingEntry $entry): bool {
+                if ($this->app->environment("local")) {
+                    return true;
+                }
 
-            return $entry->isReportableException() ||
-                   $entry->isFailedRequest() ||
-                   $entry->isFailedJob() ||
-                   $entry->isScheduledTask() ||
-                   $entry->hasMonitoredTag();
-        });
+                return $entry->isReportableException() ||
+                    $entry->isFailedRequest() ||
+                    $entry->isFailedJob() ||
+                    $entry->isScheduledTask() ||
+                    $entry->hasMonitoredTag();
+            }
+        );
     }
 
     protected function hideSensitiveRequestDetails(): void
     {
-        if ($this->app->environment('local')) {
+        if ($this->app->environment("local")) {
             return;
         }
 
-        Telescope::hideRequestParameters(['_token']);
-
-        Telescope::hideRequestHeaders([
-            'cookie',
-            'x-csrf-token',
-            'x-xsrf-token',
-        ]);
+        Telescope::hideRequestParameters(["_token"]);
+        Telescope::hideRequestHeaders(
+            [
+                "cookie",
+                "x-csrf-token",
+                "x-xsrf-token",
+            ]
+        );
     }
 
     protected function gate(): void
