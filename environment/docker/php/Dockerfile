@@ -1,7 +1,7 @@
 FROM php:7.4.9-fpm-alpine
 
 RUN apk update && apk upgrade \ 
-    && apk add --no-cache php7-pear php7-dev gcc musl-dev make
+    && apk add --no-cache php7-pear php7-dev php7-intl gcc musl-dev make icu-dev
 
 ARG COMPOSER_VERSION
 ENV COMPOSER_HOME=/application/.composer
@@ -11,4 +11,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --version=${COMPOSER_VER
 RUN docker-php-ext-install mysqli pdo pdo_mysql json
 RUN pecl install -o -f redis
 RUN docker-php-ext-enable redis
-
+RUN docker-php-ext-configure intl && docker-php-ext-install intl
