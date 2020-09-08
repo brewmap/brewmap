@@ -2,23 +2,25 @@
 
 declare(strict_types=1);
 
+namespace Database\Factories;
+
 use Brewmap\Eloquent\User;
-use Faker\Generator as Faker;
 use Illuminate\Contracts\Hashing\Hasher;
-use Illuminate\Database\Eloquent\Factory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-/** @var Factory $factory */
+class UserFactory extends Factory
+{
+    protected $model = User::class;
 
-$factory->define(
-    User::class,
-    function (Faker $faker): array {
+    public function definition(): array
+    {
         return [
-            "name" => $faker->name,
-            "email" => $faker->unique()->safeEmail,
+            "name" => $this->faker->name,
+            "email" => $this->faker->unique()->safeEmail,
             "email_verified_at" => now(),
             "password" => app(Hasher::class)->make("password"),
             "remember_token" => Str::random(10),
         ];
     }
-);
+}

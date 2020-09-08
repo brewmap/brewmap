@@ -48,12 +48,10 @@
   },
   "autoload": {
     "psr-4": {
-      "Brewmap\\": "app/"
-    },
-    "classmap": [
-      "database/seeds",
-      "database/factories"
-    ]
+      "Brewmap\\": "app/",
+      "Database\\Factories\\": "database/factories/",
+      "Database\\Seeders\\": "database/seeders/"
+    }
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
