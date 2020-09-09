@@ -15,11 +15,14 @@ class UserFactory extends Factory
 
     public function definition(): array
     {
+        /** @var Hasher $hash */
+        $hash = app(Hasher::class);
+
         return [
             "name" => $this->faker->name,
             "email" => $this->faker->unique()->safeEmail,
             "email_verified_at" => now(),
-            "password" => app(Hasher::class)->make("password"),
+            "password" => $hash->make("password"),
             "remember_token" => Str::random(10),
         ];
     }
