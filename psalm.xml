@@ -28,6 +28,7 @@
             <errorLevel type="suppress">
                 <directory name="app/Nova/Metrics"/>
                 <directory name="app/Nova/Tools"/>
+                <directory name="database/factories"/>
             </errorLevel>
         </PropertyNotSetInConstructor>
         <MissingConstructor>
