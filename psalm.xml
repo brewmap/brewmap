@@ -24,14 +24,11 @@
         <pluginClass class="Psalm\LaravelPlugin\Plugin"/>
     </plugins>
     <issueHandlers>
-        <ParamNameMismatch>
-            <errorLevel type="suppress">
-                <file name="app/Eloquent/User.php"/>
-            </errorLevel>
-        </ParamNameMismatch>
         <PropertyNotSetInConstructor>
             <errorLevel type="suppress">
                 <directory name="app/Nova/Metrics"/>
+                <directory name="app/Nova/Tools"/>
+                <directory name="database/factories"/>
             </errorLevel>
         </PropertyNotSetInConstructor>
         <MissingConstructor>
@@ -44,5 +41,10 @@
                 <directory name="app/Testing"/>
             </errorLevel>
         </MissingThrowsDocblock>
+        <UnresolvableInclude>
+            <errorLevel type="suppress">
+                <file name="app/Testing/ServiceContainer/LaravelBooter.php"/>
+            </errorLevel>
+        </UnresolvableInclude>
     </issueHandlers>
 </psalm>
