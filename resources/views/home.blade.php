@@ -5,7 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
         <link rel="icon" href="{{ asset("/images/logo.png") }}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css" integrity="sha512-8Tb+T7SKUFQWOPIQCaLDWWe1K/SY8hvHl7brOH8Nz5z1VT8fnf8B+9neoUzmFY3OzkWMMs3OjrwZALgB1oXFBg==" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css"
+              integrity="sha512-8Tb+T7SKUFQWOPIQCaLDWWe1K/SY8hvHl7brOH8Nz5z1VT8fnf8B+9neoUzmFY3OzkWMMs3OjrwZALgB1oXFBg=="
+              crossorigin="anonymous">
         <title>Brewmap</title>
         <style>
             #landing {
@@ -14,6 +16,8 @@
         </style>
     </head>
     <body class="h-full">
+        <div class="bg-yellow-500 shadow-2xl p-1"></div>
+
         <div class="flex flex-col min-h-screen w-full bg-cover bg-no-repeat" id="landing">
             <div class="w-full shadow-2xl bg-black bg-opacity-75 p-4">
                 <div class="flex items-center container mx-auto text-white">
@@ -31,11 +35,37 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="flex-1 container mx-auto flex items-center justify-center">
-                <div class="w-3/4 shadow-2xl bg-black bg-opacity-75 p-12">
-                    <label for="search"></label>
-                    <input class="w-full appearance-none rounded py-2 px-3 text-3xl text-gray-700" id="search" type="text" placeholder="Search breweries, cities, countries...">
+        <div class="bg-yellow-500 shadow-2xl p-16">
+            <div class="mx-auto container">
+                <div class="flex text-center leading-tight">
+                    @foreach($numbers as $number)
+                        <div class="flex-1 bg-white rounded-lg mx-8 p-8">
+                            <div class="text-6xl">{{ $number["value"] }}</div>
+                            {{ $number["label"] }}
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-2xl p-32">
+            <div class="mx-auto container">
+                <div class="flex-1">
+                    <h3 class="text-3xl font-bold">What is Brewmap?</h3>
+                    <p class="py-4 leading-loose">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias, beatae debitis delectus
+                        earum hic itaque, labore laborum maxime nihil nostrum odio quas quos ratione reiciendis sequi
+                        suscipit ullam velit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem doloribus
+                        expedita, laborum quae vitae voluptate voluptatum! Cumque dolorum error magnam mollitia provident
+                        repellat saepe tenetur ullam. Autem distinctio error pariatur? Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit. Animi aperiam atque commodi cumque deleniti distinctio, eveniet id
+                        labore magni nam neque nihil odio omnis quam quod similique temporibus ullam voluptatibus. Lorem
+                        ipsum dolor sit amet, consectetur adipisicing elit. Minima odio officia quisquam temporibus ut.
+                        Architecto beatae cum dolor eaque et inventore iure iusto, minima praesentium quibusdam reiciendis,
+                        sequi ullam voluptatem?
+                    </p>
                 </div>
             </div>
         </div>
@@ -51,5 +81,7 @@
                 </div>
             </div>
         </div>
+
+        <div class="bg-yellow-500 shadow-2xl p-1"></div>
     </body>
 </html>
