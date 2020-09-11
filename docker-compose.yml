@@ -7,6 +7,7 @@ services:
       dockerfile: Dockerfile
       args:
         COMPOSER_VERSION: ${COMPOSER_VERSION}
+    user: ${CURRENT_UID}
     container_name: brewmap-php
     working_dir: /application
     volumes:
