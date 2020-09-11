@@ -6,7 +6,7 @@ cp .env.example .env
 
 Run containers:
 ```shell script
-docker-compose up -d --build
+CURRENT_UID=$(id -u):$(id -g) docker-compose up -d --build
 ```
 
 Generate application key:
