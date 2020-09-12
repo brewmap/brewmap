@@ -52,3 +52,20 @@ docker-compose run -w /application -u "$(id -u):$(id -g)" php composer psalm
 docker-compose run -w /application -u "$(id -u):$(id -g)" php composer behat
 docker-compose run -w /application -u "$(id -u):$(id -g)" php composer ecs
 ```
+
+### Node
+Run Node (with command instead of `*`):
+```shell script
+docker-compose run -u "$(id -u):$(id -g)" node *
+```
+
+Like that:
+```shell script
+docker-compose run -u "$(id -u):$(id -g)" node npm -v
+docker-compose run -u "$(id -u):$(id -g)" node npm install
+```
+
+Go into PHP container:
+```shell script
+docker exec -it -u "$(id -u):$(id -g)" brewmap-node sh
+```
