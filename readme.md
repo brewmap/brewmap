@@ -1,4 +1,4 @@
-## Installation
+## Installation & development
 Create `.env` file based on `.env.example`:
 ```shell script
 cp .env.example .env
@@ -12,6 +12,11 @@ CURRENT_UID=$(id -u):$(id -g) docker-compose up -d --build
 Generate application key:
 ```shell script
 php artisan key:generate
+```
+
+Generate assets
+```shell script
+npm run dev
 ```
 
 ## Development commands

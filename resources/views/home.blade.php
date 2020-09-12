@@ -5,9 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="{{ mix("/css/app.css") }}" rel="stylesheet">
         <link rel="icon" href="{{ asset("/images/logo.png") }}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css"
-              integrity="sha512-8Tb+T7SKUFQWOPIQCaLDWWe1K/SY8hvHl7brOH8Nz5z1VT8fnf8B+9neoUzmFY3OzkWMMs3OjrwZALgB1oXFBg=="
-              crossorigin="anonymous">
         <title>Brewmap</title>
     </head>
     <body class="h-full">
@@ -66,13 +63,13 @@
         </div>
 
         <div class="bg-black shadow-2xl text-sm text-gray-500 p-4">
-            <div class="container mx-auto flex">
+            <div class="container mx-auto flex items-center">
                 <div class="flex-1">
                     brewmap 2020
                 </div>
-                <div class="flex-1 flex flex-row-reverse">
-                    <i class="large facebook icon"></i>
-                    <i class="large github icon"></i>
+                <div class="flex-1 flex items-center flex-row-reverse">
+                    <i class="px-1 fab fa-2x fa-facebook"></i>
+                    <i class="px-1 fab fa-2x fa-github"></i>
                 </div>
             </div>
         </div>
