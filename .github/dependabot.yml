@@ -11,4 +11,4 @@ updates:
       - "bot"
       - "environment"
     commit-message:
-      - "#58 - "
+      prefix: "#58 - "
