@@ -14,7 +14,7 @@ Generate application key:
 php artisan key:generate
 ```
 
-Generate assets
+Generate assets:
 ```shell script
 npm run dev
 ```
@@ -70,7 +70,7 @@ docker-compose run -u "$(id -u):$(id -g)" node npm -v
 docker-compose run -u "$(id -u):$(id -g)" node npm install
 ```
 
-Go into PHP container:
+Go into Node container:
 ```shell script
 docker exec -it -u "$(id -u):$(id -g)" brewmap-node sh
 ```
