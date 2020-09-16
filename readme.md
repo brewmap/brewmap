@@ -1,4 +1,4 @@
-## Installation
+## Installation & development
 Create `.env` file based on `.env.example`:
 ```shell script
 cp .env.example .env
@@ -12,6 +12,11 @@ CURRENT_UID=$(id -u):$(id -g) docker-compose up -d --build
 Generate application key:
 ```shell script
 php artisan key:generate
+```
+
+Generate assets
+```shell script
+npm run dev
 ```
 
 ## Development commands
@@ -51,4 +56,21 @@ You can run Psalm (for static code analysis), Behat (for tests) and ECS (for cod
 docker-compose run -w /application -u "$(id -u):$(id -g)" php composer psalm
 docker-compose run -w /application -u "$(id -u):$(id -g)" php composer behat
 docker-compose run -w /application -u "$(id -u):$(id -g)" php composer ecs
+```
+
+### Node
+Run Node (with command instead of `*`):
+```shell script
+docker-compose run -u "$(id -u):$(id -g)" node *
+```
+
+Like that:
+```shell script
+docker-compose run -u "$(id -u):$(id -g)" node npm -v
+docker-compose run -u "$(id -u):$(id -g)" node npm install
+```
+
+Go into PHP container:
+```shell script
+docker exec -it -u "$(id -u):$(id -g)" brewmap-node sh
 ```

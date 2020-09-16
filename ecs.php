@@ -36,7 +36,7 @@ return static function (ContainerConfigurator $containerConfigurator) use ($sets
     $parameters->set(Option::SETS, $sets);
     $parameters->set(Option::SKIP, $skipped);
 
-    $parameters->set(Option::PATHS, ["app", "config", "database", "routes"]);
+    $parameters->set(Option::PATHS, ["app", "config", "database", "resources/lang", "routes"]);
 
     $services = $containerConfigurator->services();
     foreach ($rules as $rule => $configuration) {
