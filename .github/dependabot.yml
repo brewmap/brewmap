@@ -1,14 +1,8 @@
-version: 2
-updates:
-  - package-ecosystem: "composer"
+version: 1
+update_configs:
+  - package_manager: "php:composer"
+    update_schedule: "live"
     directory: "/"
-    schedule:
-      interval: "daily"
-      time: "07:00"
-      timezone: "Europe/Warsaw"
-    target-branch: "develop"
-    labels:
-      - "bot"
-      - "environment"
-    commit-message:
+    target_branch: "develop"
+    commit_message:
       prefix: "#58 - "
