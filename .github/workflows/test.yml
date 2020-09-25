@@ -2,9 +2,9 @@ name: Behaviour, code and style test
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ "#37-cache-actions" ]
   pull_request:
-    branches: [ develop ]
+    branches: [ "#37-cache-actions" ]
 
 jobs:
   build:
@@ -18,7 +18,9 @@ jobs:
       run:  composer validate
     
     - name: Prepare environments for tests
-      run: ./.github/scripts/decrypt.sh
+      run: |
+        ./.github/scripts/decrypt.sh
+        mkdir -p .npm
       env:
         decryptKey: ${{ secrets.decryptKey }}  
 
@@ -28,8 +30,30 @@ jobs:
     - name: Authenticating Nova in Continuous Integration
       run:  docker-compose run php composer config http-basic.nova.laravel.com "${{ secrets.novaUsername }}" "${{ secrets.novaPassword }}"
 
+    - name: Cache composer dependencies
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-composer-dependencies
+      with: 
+        path: vendor
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-composer-
+
     - name: Install PHP dependencies
       run: docker-compose run php composer install --prefer-dist --no-progress --no-suggest
+    
+    - name: Cache node modules
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
 
     - name: Install JS dependencies
       run: docker-compose run node npm install
@@ -38,10 +62,10 @@ jobs:
       run: docker-compose run php php artisan nova:publish && docker-compose run php php artisan telescope:publish && docker-compose run node npm run dev
 
     - name: Run test suite
-      run:  docker-compose run php composer behat
+      run: docker-compose run php composer behat
 
     - name: Run code style checker
-      run:  docker-compose run php composer ecs
+      run: docker-compose run php composer ecs
 
     - name: Run code static analysis
-      run:  docker-compose run php composer psalm
+      run: docker-compose run php composer psalm
