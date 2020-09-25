@@ -25,10 +25,11 @@ jobs:
         decryptKey: ${{ secrets.decryptKey }}  
     - name: Cache docker images
       uses: actions/cache@v2
-      id: cache
       with: 
-        path: /var/lib/docker/overlay2
-        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+        path: /var/lib/docker
+        key: ${{ runner.os }}-docker-${{ hashFiles('**/overlay2') }}
+        restore-keys: |
+          ${{ runner.os }}-docker-
 
     - name: Build PHP & Database containers
       run:  docker-compose -f docker-compose.yml up -d --build
