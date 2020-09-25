@@ -16,6 +16,8 @@ php artisan key:generate
 
 Generate assets:
 ```shell script
+php artisan nova:publish
+php artisan telescope:publish
 npm run dev
 ```
 

@@ -27,9 +27,15 @@ jobs:
   
     - name: Authenticating Nova in Continuous Integration
       run:  docker-compose run php composer config http-basic.nova.laravel.com "${{ secrets.novaUsername }}" "${{ secrets.novaPassword }}"
-    
-    - name: Install dependencies
-      run:  docker-compose run php composer install --prefer-dist --no-progress --no-suggest
+
+    - name: Install PHP dependencies
+      run: docker-compose run php composer install --prefer-dist --no-progress --no-suggest
+
+    - name: Install JS dependencies
+      run: docker-compose run node npm install
+
+    - name: Build artifacts
+      run: docker-compose run php php artisan nova:publish && docker-compose run php php artisan telescope:publish && docker-compose run node npm run dev
 
     - name: Run test suite
       run:  docker-compose run php composer behat
