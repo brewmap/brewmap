@@ -3,11 +3,7 @@ version: "3.7"
 services:
   php:
     container_name: brewmap-php
-    build:
-      context: ./environment/docker/php
-      dockerfile: Dockerfile
-      args:
-        COMPOSER_VERSION: ${COMPOSER_VERSION}
+    image: ghcr.io/brewmap/brewmap-php:0.0.1
     user: ${CURRENT_UID}
     working_dir: /application
     volumes:
