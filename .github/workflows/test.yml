@@ -2,9 +2,9 @@ name: Behaviour, code and style test
 
 on:
   push:
-    branches: [ "#37-cache-actions" ]
+    branches: [ develop ]
   pull_request:
-    branches: [ "#37-cache-actions" ]
+    branches: [ develop ]
 
 jobs:
   build:
@@ -23,13 +23,6 @@ jobs:
         mkdir -p .npm
       env:
         decryptKey: ${{ secrets.decryptKey }}  
-    - name: Cache docker images
-      uses: actions/cache@v2
-      with: 
-        path: /var/lib/docker
-        key: ${{ runner.os }}-docker-${{ hashFiles('**/overlay2') }}
-        restore-keys: |
-          ${{ runner.os }}-docker-
 
     - name: Build PHP & Database containers
       run:  docker-compose -f docker-compose.yml up -d --build
