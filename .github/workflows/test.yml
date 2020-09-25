@@ -23,6 +23,12 @@ jobs:
         mkdir -p .npm
       env:
         decryptKey: ${{ secrets.decryptKey }}  
+    - name: Cache docker images
+      uses: actions/cache@v2
+      id: cache
+      with: 
+        path: /var/lib/docker/overlay2
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
     - name: Build PHP & Database containers
       run:  docker-compose -f docker-compose.yml up -d --build
@@ -32,8 +38,6 @@ jobs:
 
     - name: Cache composer dependencies
       uses: actions/cache@v2
-      env:
-        cache-name: cache-composer-dependencies
       with: 
         path: vendor
         key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
