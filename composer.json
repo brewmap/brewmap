@@ -14,24 +14,27 @@
   ],
   "require": {
     "php": "^7.4",
+    "ext-intl": "*",
     "ext-json": "*",
     "ext-pdo": "*",
     "fideloper/proxy": "^4.2",
     "fruitcake/laravel-cors": "^2.0",
-    "guzzlehttp/guzzle": "^6.3",
-    "laravel/framework": "^7.24",
-    "laravel/nova": "~3.0",
     "laravel/sanctum": "^2.6",
+    "guzzlehttp/guzzle": "^7.0.1",
+    "laravel/framework": "^8.0",
+    "laravel/nova": "^3.9",
+    "laravel/telescope": "^4.0",
     "laravel/tinker": "^2.0"
   },
   "require-dev": {
-    "facade/ignition": "^2.0",
+    "facade/ignition": "^2.3.6",
     "fzaninotto/faker": "^1.9.1",
     "krzysztofrewak/larahat": "^1.0",
+    "krzysztofrewak/php-cs-double-quote-fixer": "^1.0",
     "mockery/mockery": "^1.3.1",
-    "nunomaduro/collision": "^4.1",
-    "phpunit/phpunit": "^8.5",
-    "psalm/plugin-laravel": "^1.3",
+    "nunomaduro/collision": "^5.0",
+    "phpunit/phpunit": "^9.3",
+    "psalm/plugin-laravel": "^1.4",
     "symplify/easy-coding-standard": "^8.2",
     "vimeo/psalm": "^3.15.0"
   },
@@ -47,12 +50,10 @@
   },
   "autoload": {
     "psr-4": {
-      "Brewmap\\": "app/"
-    },
-    "classmap": [
-      "database/seeds",
-      "database/factories"
-    ]
+      "Brewmap\\": "app/",
+      "Database\\Factories\\": "database/factories/",
+      "Database\\Seeders\\": "database/seeders/"
+    }
   },
   "minimum-stability": "dev",
   "prefer-stable": true,

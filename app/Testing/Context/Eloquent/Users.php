@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Brewmap\Testing\Eloquent;
+namespace Brewmap\Testing\Context\Eloquent;
 
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
 use Brewmap\Eloquent\Profile;
 use Brewmap\Eloquent\User;
+use Database\Factories\UserFactory;
 use KrzysztofRewak\Larahat\Helpers\RefreshingDatabase;
 use PHPUnit\Framework\Assert;
 
@@ -22,7 +23,7 @@ class Users implements Context
      */
     public function thereIsAnUserCreated(): void
     {
-        $this->user = factory(User::class)->create();
+        $this->user = UserFactory::new()->create();
     }
 
     /**
@@ -32,7 +33,7 @@ class Users implements Context
     public function thereAreUsersCreated(TableNode $table): void
     {
         foreach ($table->getHash() as $user) {
-            factory(User::class)->create($user);
+            UserFactory::new()->create($user);
         }
     }
 

@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use KrzysztofRewak\PhpCsFixer\DoubleQuoteFixer\DoubleQuoteFixer;
 use PhpCsFixer\Fixer\CastNotation\CastSpacesFixer;
 use PhpCsFixer\Fixer\ClassNotation\ClassAttributesSeparationFixer;
 use PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer;
@@ -27,6 +28,7 @@ $skipped = [
 $rules = [
     DeclareStrictTypesFixer::class => null,
     CastSpacesFixer::class => ["space" => "none"],
+    DoubleQuoteFixer::class => null,
 ];
 
 return static function (ContainerConfigurator $containerConfigurator) use ($sets, $skipped, $rules): void {
@@ -34,7 +36,7 @@ return static function (ContainerConfigurator $containerConfigurator) use ($sets
     $parameters->set(Option::SETS, $sets);
     $parameters->set(Option::SKIP, $skipped);
 
-    $parameters->set(Option::PATHS, ["app", "config", "database", "routes"]);
+    $parameters->set(Option::PATHS, ["app", "config", "database", "resources/lang", "routes"]);
 
     $services = $containerConfigurator->services();
     foreach ($rules as $rule => $configuration) {

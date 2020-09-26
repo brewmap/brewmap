@@ -2,12 +2,9 @@ version: "3.7"
 
 services:
   php:
-    build:
-      context: ./environment/docker/php
-      dockerfile: Dockerfile
-      args:
-        COMPOSER_VERSION: ${COMPOSER_VERSION}
     container_name: brewmap-php
+    image: ghcr.io/brewmap/brewmap-php:0.0.1
+    user: ${CURRENT_UID}
     working_dir: /application
     volumes:
       - .:/application
@@ -56,6 +53,15 @@ services:
       - "${EXT_REDIS_PORT}:6379"
     depends_on:
       - php
+    restart: always
+
+  node:
+    container_name: brewmap-node
+    image: node:alpine3.11
+    user: ${CURRENT_UID}
+    working_dir: /application
+    volumes:
+      - .:/application
     restart: always
     
 volumes:

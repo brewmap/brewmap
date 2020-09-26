@@ -1,23 +1,24 @@
 default:
   extensions:
-    KrzysztofRewak\Larahat\BehatExtension:
+    Brewmap\Testing\ServiceContainer\BehatExtension:
       env: ".env.behat"
 
   suites:
     http:
       contexts:
-        - Brewmap\Testing\InternalHttpRequesting
+        - Brewmap\Testing\Context\Application\Config
+        - Brewmap\Testing\Context\InternalHttpRequesting
       paths:
         - features/http
 
     eloquent:
       contexts:
-        - Brewmap\Testing\Eloquent\Users
+        - Brewmap\Testing\Context\Eloquent\Users
       paths:
         - features/eloquent
 
     API:
       contexts:
-        - Brewmap\Testing\InternalHttpRequesting
+        - Brewmap\Testing\Context\InternalHttpRequesting
       paths:
         - features/API
