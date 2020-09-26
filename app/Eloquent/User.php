@@ -21,7 +21,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $name
  * @property string $email
  * @property string|null $emailVerifiedAt
- * @property string $password
+ * @property string|null $password
+ * @property string $facebookId
  * @property string $rememberToken
  * @property Profile $profile
  * @property Carbon $createdAt
@@ -38,7 +39,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     protected $casts = ["email_verified_at" => "datetime"];
     protected $hidden = ["password", "remember_token"];
-    protected $fillable = ["email", "password", "name"];
+    protected $fillable = ["email", "password", "name", "facebookId"];
 
     public function profile(): HasOne
     {
