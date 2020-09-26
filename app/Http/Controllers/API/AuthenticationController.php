@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Brewmap\Http\Controllers\API;
 
-use Brewmap\Eloquent\User;
 use Brewmap\Http\Controllers\Controller;
 use Brewmap\Http\Requests\LoginUserRequest;
 use Brewmap\Http\Requests\RegisterUserRequest;

@@ -36,7 +36,7 @@ class AuthenticationService
     {
         $user = User::where("facebook_id", $facebookUser->getId())->first();
         if (!$user) {
-            $user = new User;
+            $user = new User();
             $user->name = $facebookUser->getName();
             $user->email = $facebookUser->getEmail();
             $user->facebookId = $facebookUser->getId();

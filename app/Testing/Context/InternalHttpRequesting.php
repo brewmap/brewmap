@@ -81,7 +81,7 @@ class InternalHttpRequesting implements Context
      * @Then a response should be of type :type
      */
     public function responseShouldBeOfType(string $type): void
-    {        
+    {
         Assert::assertEquals($type, get_class($this->response));
     }
 
@@ -89,7 +89,7 @@ class InternalHttpRequesting implements Context
      * @Then a response should be a redirect containing :address
      */
     public function redirectTargetUrlShouldContain(string $address): void
-    {                                     
+    {
         Assert::assertTrue($this->response->isRedirect());
         Assert::assertStringContainsString($address, $this->response->getTargetUrl());
     }
