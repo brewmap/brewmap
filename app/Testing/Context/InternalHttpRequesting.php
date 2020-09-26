@@ -33,18 +33,6 @@ class InternalHttpRequesting implements Context
     }
 
     /**
-     * @Given required :amount :class object/objects is/are already existing
-     */
-    public function requiredObjectsAreAlreadyExisting(int $amount, string $class): void
-    {
-        factory(config("app.namespace") . "\\" . config("app.model_namespace") . "\\" . $class, $amount)
-            ->create()
-            ->each(function ($object): void {
-                $object->save();
-            });
-    }
-
-    /**
      * @Given request body contains :key equal :value
      */
     public function requestBodyContains(string $key, string $value): void
@@ -87,5 +75,22 @@ class InternalHttpRequesting implements Context
         foreach ($table as $row) {
             Assert::assertEquals($response[$row["key"]], $row["value"]);
         }
+    }
+
+    /**
+     * @Then a response should be of type :type
+     */
+    public function responseShouldBeOfType(string $type): void
+    {        
+        Assert::assertEquals($type, get_class($this->response));
+    }
+
+    /**
+     * @Then a response should be a redirect containing :address
+     */
+    public function redirectTargetUrlShouldContain(string $address): void
+    {                                     
+        Assert::assertTrue($this->response->isRedirect());
+        Assert::assertStringContainsString($address, $this->response->getTargetUrl());
     }
 }

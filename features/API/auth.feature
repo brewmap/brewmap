@@ -1,5 +1,5 @@
 @API @Auth
-Feature: Test and ability to register and login
+Feature: Test an ability to register and login
 
   Scenario: User is attempting to register using valid data
     Given an user is requesting "/api/register" using "POST"
