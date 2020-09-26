@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use Brewmap\Eloquent\User;
 use Illuminate\Database\Seeder;
+use Database\Factories\UserFactory;
 
 class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        factory(User::class, 20)->create()->each(function (User $user): void {
-            $user->save();
-        });
+        UserFactory::new()->times(20)->create();
     }
 }
