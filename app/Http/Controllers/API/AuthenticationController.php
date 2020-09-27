@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Brewmap\Http\Controllers\API;
 
 use Brewmap\Http\Controllers\Controller;
-use Brewmap\Http\Requests\LoginUserRequest;
-use Brewmap\Http\Requests\RegisterUserRequest;
+use Brewmap\Http\Requests\User\RegisterUserRequest;
+use Brewmap\Http\Requests\User\LoginUserRequest;
 use Brewmap\Services\AuthenticationService;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
@@ -35,10 +35,13 @@ class AuthenticationController extends Controller
         return Socialite::driver("facebook")->redirect();
     }
 
+    /**
+     * @throws HttpResponseException
+     */
     public function handleFacebookCallback(AuthenticationService $authenticationService): JsonResponse
     {
         $facebookUser = Socialite::driver("facebook")->user();
-        $token = $authenticationService->authorizeByFacebook($facebookUser);
+        $token = $authenticationService->getTokenBySocialLogin($facebookUser, "facebook");
         return response()->json(["token" => $token]);
     }
 }

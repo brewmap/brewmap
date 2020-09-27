@@ -13,11 +13,20 @@ class AddFacebookLogin extends Migration
      */
     public function up(): void
     {
+        Schema::create(
+            "social_profiles",
+            function (Blueprint $table): void {
+                $table->uuid("user_id")->primary();
+                $table->foreign("user_id")->references("id")->on("users");
+                $table->string("facebook_id")->nullable();
+                $table->timestamps();
+            }
+        );
+
         Schema::table(
             "users",
             function (Blueprint $table): void {
                 $table->string("password")->nullable()->change();
-                $table->string("facebook_id")->nullable();
             }
         );
     }
@@ -31,8 +40,14 @@ class AddFacebookLogin extends Migration
             "users",
             function (Blueprint $table): void {
                 $table->string("password")->change();
-                $table->dropColumn("facebook_id");
             }
         );
+        Schema::table(
+            "social_profiles",
+            function (Blueprint $table): void {
+                $table->dropForeign(["user_id"]);
+            }
+        );
+        Schema::dropIfExists("social_profiles");
     }
 }
