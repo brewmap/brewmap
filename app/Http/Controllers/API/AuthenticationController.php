@@ -42,7 +42,7 @@ class AuthenticationController extends Controller
     public function handleFacebookCallback(AuthenticationService $authenticationService): JsonResponse
     {
         $facebookUser = Socialite::driver("facebook")->user();
-        $token = $authenticationService->getTokenBySocialLogin($facebookUser, "github");
+        $token = $authenticationService->getTokenBySocialLogin($facebookUser, "facebook");
         return response()->json(["token" => $token]);
     }
 }
