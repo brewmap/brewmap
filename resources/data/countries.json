@@ -1,0 +1,23 @@
+{
+  "countries": [
+    { "code": "pl",  "name": "Poland" },
+    { "code": "at",  "name": "Austria" },
+    { "code": "de",  "name": "Germany" },
+    { "code": "cz",  "name": "Czechia" },
+    { "code": "al",  "name": "Albania" },
+    { "code": "ba",  "name": "Bosnia and Herzegovina" },
+    { "code": "it",  "name": "Italy" },
+    { "code": "si",  "name": "Slovenia" },
+    { "code": "gr",  "name": "Greece" },
+    { "code": "nl",  "name": "Netherlands" },
+    { "code": "ee",  "name": "Estonia" },
+    { "code": "ua",  "name": "Ukraine" },
+    { "code": "mt",  "name": "Malta" },
+    { "code": "fr",  "name": "France" },
+    { "code": "ch",  "name": "Switzerland" },
+    { "code": "li",  "name": "Liechtenstein" },
+    { "code": "gb",  "name": "United Kingdom" },
+    { "code": "is",  "name": "Iceland" },
+    { "code": "sk",  "name": "Slovakia" }
+  ]
+}
