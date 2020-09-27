@@ -27,7 +27,7 @@ class AuthenticationService
      */
     public function login(Request $request): string
     {
-        $user = User::where("email", $request->email)->first();
+        $user = User::query()->firstWhere("email", $request->email);
         if ($user === null || !$this->hash->check($request->password, $user->password)) {
             throw new HttpResponseException(response()->json(["message" => __("auth.credentialsMismatch")], Response::HTTP_UNAUTHORIZED));
         }
