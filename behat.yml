@@ -20,5 +20,6 @@ default:
     API:
       contexts:
         - Brewmap\Testing\Context\InternalHttpRequesting
+        - Brewmap\Testing\Context\Eloquent\Users
       paths:
         - features/API

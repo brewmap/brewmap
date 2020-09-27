@@ -29,6 +29,7 @@ class Users implements Context
     /**
      * @When there is an user created:
      * @When there are users created:
+     * @Given there is/are already existing user(s)   
      */
     public function thereAreUsersCreated(TableNode $table): void
     {
