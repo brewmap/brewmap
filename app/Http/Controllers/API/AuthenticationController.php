@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Brewmap\Http\Controllers\API;
 
+use Brewmap\Exceptions\Auth\SocialProviderConfigurationException;
+use Brewmap\Exceptions\Auth\UnauthorizedException;
 use Brewmap\Http\Controllers\Controller;
 use Brewmap\Http\Requests\User\LoginUserRequest;
 use Brewmap\Http\Requests\User\RegisterUserRequest;
 use Brewmap\Services\AuthenticationService;
-use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Laravel\Socialite\Facades\Socialite;
@@ -16,7 +17,7 @@ use Laravel\Socialite\Facades\Socialite;
 class AuthenticationController extends Controller
 {
     /**
-     * @throws HttpResponseException
+     * @throws UnauthorizedException
      */
     public function login(LoginUserRequest $request, AuthenticationService $authenticationService): JsonResponse
     {
@@ -36,12 +37,12 @@ class AuthenticationController extends Controller
     }
 
     /**
-     * @throws HttpResponseException
+     * @throws SocialProviderConfigurationException
      */
     public function handleFacebookCallback(AuthenticationService $authenticationService): JsonResponse
     {
         $facebookUser = Socialite::driver("facebook")->user();
-        $token = $authenticationService->getTokenBySocialLogin($facebookUser, "facebook");
+        $token = $authenticationService->getTokenBySocialLogin($facebookUser, "github");
         return response()->json(["token" => $token]);
     }
 }

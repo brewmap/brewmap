@@ -6,9 +6,10 @@ namespace Brewmap\Services;
 
 use Brewmap\Eloquent\SocialProfile;
 use Brewmap\Eloquent\User;
+use Brewmap\Exceptions\Auth\SocialProviderConfigurationException;
+use Brewmap\Exceptions\Auth\UnauthorizedException;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Schema;
@@ -23,13 +24,13 @@ class AuthenticationService
     }
 
     /**
-     * @throws HttpResponseException
+     * @throws UnauthorizedException
      */
     public function login(Request $request): string
     {
-        $user = User::query()->firstWhere("email", $request->email);
+        $user = User::query()->where("email", $request->email)->first();
         if ($user === null || !$this->hash->check($request->password, $user->password)) {
-            throw new HttpResponseException(response()->json(["message" => __("auth.credentialsMismatch")], Response::HTTP_UNAUTHORIZED));
+            throw new UnauthorizedException(__("auth.credentialsMismatch"));
         }
         return $user->createToken($user->email)->plainTextToken;
     }
@@ -42,16 +43,16 @@ class AuthenticationService
     }
 
     /**
-     * @throws HttpResponseException
+     * @throws SocialProviderConfigurationException
      */
     public function getTokenBySocialLogin(SocialUser $socialUser, string $socialProviderName): string
     {
         if (!$this->isSocialProviderConfigured($socialProviderName)) {
-            throw new HttpResponseException(response()->json(["message" => __("auth.socialServiceError")], Response::HTTP_NOT_IMPLEMENTED));
+            throw new SocialProviderConfigurationException(__("auth.socialServiceError"), Response::HTTP_NOT_IMPLEMENTED);
         }
         try {
             $user = SocialProfile::query()->where($socialProviderName . "_id", $socialUser->getId())->firstOrFail()->user;
-        } catch (ModelNotFoundException $ex) {
+        } catch (ModelNotFoundException $exception) {
             $user = new User();
             $user->name = $socialUser->getName();
             $user->email = $socialUser->getEmail();
