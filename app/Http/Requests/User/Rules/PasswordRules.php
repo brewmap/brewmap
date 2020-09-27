@@ -12,5 +12,5 @@ class PasswordRules extends BaseRules
         "required",
         "string",
         "min:8",
-    ];   
+    ];
 }

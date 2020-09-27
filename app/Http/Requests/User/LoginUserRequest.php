@@ -13,8 +13,8 @@ class LoginUserRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            "email" => EmailRules::rules(),              
-            "password" => PasswordRules::rules()
+            "email" => EmailRules::rules(),
+            "password" => PasswordRules::rules(),
         ];
     }
 }

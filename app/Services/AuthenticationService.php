@@ -70,7 +70,7 @@ class AuthenticationService
     {
         $services = config("services");
         $schema = app(Schema::class);
-        if (!array_key_exists($socialProviderName, $services) || $services[$socialProviderName] == null || !$schema->hasColumn("social_profile", $socialProviderName . "_id")) {
+        if (!array_key_exists($socialProviderName, $services) || $services[$socialProviderName] === null || !$schema->hasColumn("social_profile", $socialProviderName . "_id")) {
             return false;
         }
         return true;

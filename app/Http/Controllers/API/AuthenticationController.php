@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Brewmap\Http\Controllers\API;
 
 use Brewmap\Http\Controllers\Controller;
-use Brewmap\Http\Requests\User\RegisterUserRequest;
 use Brewmap\Http\Requests\User\LoginUserRequest;
+use Brewmap\Http\Requests\User\RegisterUserRequest;
 use Brewmap\Services\AuthenticationService;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;

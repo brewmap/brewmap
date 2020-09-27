@@ -7,5 +7,5 @@ return [
     "throttle" => "Too many login attempts. Please try again in :seconds seconds.",
     "credentialsMismatch" => "Provided credentials do not match our records.",
     "registerSuccess" => "Successfully registered a new account.",
-    "socialServiceError" => "Attempted social service provider is not configured properly or missing."
+    "socialServiceError" => "Attempted social service provider is not configured properly or missing.",
 ];
