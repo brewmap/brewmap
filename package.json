@@ -20,7 +20,7 @@
     "vue-template-compiler": "^2.6.12"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.14.0",
+    "@fortawesome/fontawesome-free": "^5.15.0",
     "node-forge": "^0.10.0",
     "tailwindcss": "^1.8.10"
   }
