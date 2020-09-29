@@ -3,7 +3,7 @@ version: "3.7"
 services:
   php:
     container_name: brewmap-php
-    image: ghcr.io/brewmap/brewmap-php:0.0.1
+    image: ghcr.io/brewmap/brewmap-php:0.0.2
     user: ${CURRENT_UID}
     working_dir: /application
     volumes:
@@ -43,7 +43,7 @@ services:
       - php
     restart: always
 
-  redis: 
+  redis:
     container_name: brewmap-redis
     image: redis:6.0.6-alpine
     volumes:
@@ -63,7 +63,7 @@ services:
     volumes:
       - .:/application
     restart: always
-    
+
 volumes:
   mysql-data:
   redis-data:
