@@ -22,7 +22,7 @@ return [
         BootTools::class,
         Authorize::class,
     ],
-    "pagination" => "simple",
+    "pagination" => "links",
     "actions" => [
         "resource" => ActionResource::class,
     ],

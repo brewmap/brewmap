@@ -14,7 +14,7 @@ class RealWorldCountriesSeeder extends Seeder
         Country::query()->delete();
 
         $countries = json_decode(file_get_contents(resource_path("data/countries.json")), true);
-        foreach ($countries["countries"] as $country) {
+        foreach ($countries as $country) {
             Country::query()->create($country);
         }
     }
