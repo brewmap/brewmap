@@ -15,7 +15,7 @@ class CountryFactory extends Factory
     {
         return [
             "name" => $this->faker->country,
-            "symbol" => strtolower($this->faker->countryCode),
+            "code" => strtolower($this->faker->countryCode),
         ];
     }
 }
