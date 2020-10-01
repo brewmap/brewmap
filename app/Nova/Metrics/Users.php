@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Brewmap\Nova\Metrics;
 
-use Brewmap\Eloquent\Country;
+use Brewmap\Eloquent\User;
 use Laravel\Nova\Metrics\Value;
 use Laravel\Nova\Metrics\ValueResult;
 
-class Countries extends Value
+class Users extends Value
 {
     public function calculate(): ValueResult
     {
-        return $this->result(Country::query()->count());
+        return $this->result(User::query()->count());
     }
 
     public function uriKey(): string
     {
-        return "countries";
+        return "users";
     }
 }

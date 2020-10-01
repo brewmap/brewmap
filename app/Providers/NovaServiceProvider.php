@@ -7,6 +7,7 @@ namespace Brewmap\Providers;
 use Brewmap\Eloquent\User as BrewmapUser;
 use Brewmap\Nova\Metrics\Countries;
 use Brewmap\Nova\Metrics\NewUsers;
+use Brewmap\Nova\Metrics\Users;
 use Brewmap\Nova\Resources\Country;
 use Brewmap\Nova\Resources\User;
 use Brewmap\Nova\Tools\TelescopeLink;
@@ -57,8 +58,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards(): array
     {
         return [
-            new NewUsers(),
             new Countries(),
+            new Users(),
+            new NewUsers(),
         ];
     }
 }
