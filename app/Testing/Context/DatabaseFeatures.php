@@ -16,6 +16,6 @@ class DatabaseFeatures implements Context
     {
         /** @var Seeder $seeder */
         $seeder = new $class();
-        $seeder->__invoke();
+        $seeder();
     }
 }
