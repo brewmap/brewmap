@@ -51,4 +51,12 @@ class Countries implements Context
             Assert::assertEquals($country["slug"], $this->countries[$i]->slug);
         }
     }
+
+    /**
+     * @Then there should be :count countries in database
+     */
+    public function thereShouldBeCountriesInDatabase(int $count): void
+    {
+        Assert::assertEquals($count, Country::query()->count());
+    }
 }
