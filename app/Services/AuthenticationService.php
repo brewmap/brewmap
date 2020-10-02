@@ -18,6 +18,7 @@ use Laravel\Socialite\Contracts\User as SocialUser;
 class AuthenticationService
 {
     protected Hasher $hash;
+
     public function __construct(Hasher $hash)
     {
         $this->hash = $hash;

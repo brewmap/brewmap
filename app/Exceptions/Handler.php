@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Brewmap\Exceptions;
 
-use Brewmap\Exceptions\Auth\ApiException;
 use Illuminate\Foundation\Exceptions\Handler as LaravelHandler;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
