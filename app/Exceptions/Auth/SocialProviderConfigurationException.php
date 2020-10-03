@@ -10,5 +10,5 @@ use Illuminate\Http\Response;
 class SocialProviderConfigurationException extends Exception
 {
     protected $message = "Attempted social service provider is not configured properly.";
-    protected $code = Response::HTTP_NOT_IMPLEMENTED;  
+    protected $code = Response::HTTP_NOT_IMPLEMENTED;
 }
