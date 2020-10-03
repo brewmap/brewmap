@@ -34,7 +34,7 @@ jobs:
     - name: Cache composer dependencies
       uses: actions/cache@v2
       with:
-        path: .composer
+        path: vendor
         key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-composer-
@@ -51,7 +51,9 @@ jobs:
           ${{ runner.os }}-node-
 
     - name: Install JS dependencies
-      run: docker-compose run -u "$(id -u):$(id -g)" node npm install
+      run: |
+        docker-compose run -u "root:root" node sudo chown -R $(id -u):$(id -g) /root/.npm
+        docker-compose run -u "$(id -u):$(id -g)" node npm install
 
     - name: Build artifacts
       run: docker-compose run php php artisan nova:publish && docker-compose run php php artisan telescope:publish && docker-compose run node npm run dev
