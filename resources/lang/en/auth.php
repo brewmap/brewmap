@@ -5,7 +5,7 @@ declare(strict_types=1);
 return [
     "failed" => "These credentials do not match our records.",
     "throttle" => "Too many login attempts. Please try again in :seconds seconds.",
-    "credentialsMismatch" => "Provided credentials do not match our records.",
-    "registerSuccess" => "Successfully registered a new account.",
-    "socialServiceError" => "Attempted social service provider is not configured properly or missing.",
+    "credentials_mismatch" => "Provided credentials do not match our records.",
+    "register_success" => "Successfully registered a new account.",
+    "social_service_error" => "Attempted social service provider is not configured properly or missing.",
 ];

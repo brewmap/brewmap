@@ -28,7 +28,7 @@ class AuthenticationController extends Controller
     public function register(RegisterUserRequest $request, AuthenticationService $authenticationService): JsonResponse
     {
         $authenticationService->register($request->validated());
-        return response()->json(["message" => __("auth.registerSuccess")]);
+        return response()->json(["message" => __("auth.register_success")]);
     }
 
     public function redirectToFacebook(): RedirectResponse
