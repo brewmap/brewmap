@@ -62,6 +62,7 @@ services:
     working_dir: /application
     volumes:
       - .:/application
+      - .npm:/root/.npm
     restart: always
 
 volumes:
