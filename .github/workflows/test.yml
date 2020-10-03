@@ -21,6 +21,7 @@ jobs:
       run: |
         echo "::set-env name=CURRENT_UID::$(id -u):$(id -g)"
         ./.github/scripts/decrypt.sh
+        mkdir -p .npm
       env:
         decryptKey: ${{ secrets.decryptKey }}
 
@@ -44,7 +45,7 @@ jobs:
     - name: Cache node modules
       uses: actions/cache@v2
       with:
-        path: node_modules
+        path: ~/.npm
         key: ${{ runner.os }}-npm-brewmap-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-npm-brewmap-
