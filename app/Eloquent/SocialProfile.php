@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * @property string $userId
  * @property User $user
- * @property string $facebookId
+ * @property string $providerName
+ * @property string $providerId
  * @property Carbon $createdAt
  * @property Carbon $updatedAt
  */

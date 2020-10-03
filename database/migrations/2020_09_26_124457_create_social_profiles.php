@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFacebookLogin extends Migration
+class CreateSocialProfiles extends Migration
 {
     /**
      * Run the migrations.
@@ -18,7 +18,8 @@ class AddFacebookLogin extends Migration
             function (Blueprint $table): void {
                 $table->uuid("user_id")->primary();
                 $table->foreign("user_id")->references("id")->on("users");
-                $table->string("facebook_id")->nullable();
+                $table->string("provider_name");
+                $table->string("provider_id");
                 $table->timestamps();
             }
         );
