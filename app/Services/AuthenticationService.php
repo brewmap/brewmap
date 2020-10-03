@@ -54,21 +54,17 @@ class AuthenticationService
 
     private function matchOrCreateSocialUser(SocialUser $socialUser, string $socialProviderName): User
     {
-        $socialProfile = SocialProfile::query()
-            ->has("user")
-            ->where("provider_id", $socialUser->getId())
-            ->first();
-
-        if ($socialProfile === null) {
+        $socialProfile = SocialProfile::query()->where("provider_id", $socialUser->getId())->first();
+        if ($socialProfile !== null) {
+            $user = $socialProfile->user;
+        } else {
             $user = User::query()->where("email", $socialUser->getEmail())->first();
-
             if ($user === null) {
                 $user = new User();
                 $user->name = $socialUser->getName();
                 $user->email = $socialUser->getEmail();
                 $user->save();
             }
-
             $socialProfile = new SocialProfile();
             $socialProfile->userId = $user->id;
             $socialProfile->providerId = $socialUser->getId();
