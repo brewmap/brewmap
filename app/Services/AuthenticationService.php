@@ -11,7 +11,6 @@ use Brewmap\Exceptions\Auth\UnauthorizedException;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Schema;
 use Laravel\Socialite\Contracts\User as SocialUser;
 
@@ -31,7 +30,7 @@ class AuthenticationService
     {
         $user = User::query()->where("email", $request->email)->first();
         if ($user === null || !$this->hash->check($request->password, $user->password)) {
-            throw new UnauthorizedException(__("auth.credentialsMismatch"));
+            throw new UnauthorizedException(__("auth.credentials_mismatch"));
         }
         return $user->createToken($user->email)->plainTextToken;
     }
@@ -49,7 +48,7 @@ class AuthenticationService
     public function getTokenBySocialLogin(SocialUser $socialUser, string $socialProviderName): string
     {
         if (!$this->isSocialProviderConfigured($socialProviderName)) {
-            throw new SocialProviderConfigurationException(__("auth.socialServiceError"), Response::HTTP_NOT_IMPLEMENTED);
+            throw new SocialProviderConfigurationException();
         }
         try {
             $user = SocialProfile::query()->where($socialProviderName . "_id", $socialUser->getId())->firstOrFail()->user;
@@ -61,7 +60,8 @@ class AuthenticationService
 
             $socialProfile = new SocialProfile();
             $socialProfile->userId = $user->id;
-            $socialProfile->facebookId = $socialUser->getId();
+            $socialProviderIdProperty = $socialProfile->getProperty($socialProviderName . "Id");
+            $socialProfile->$socialProviderIdProperty = $socialUser->getId();
             $socialProfile->save();
         }
 
@@ -71,8 +71,8 @@ class AuthenticationService
     private function isSocialProviderConfigured(string $socialProviderName): bool
     {
         $services = config("services");
-        $schema = app(Schema::class);
-        if (!array_key_exists($socialProviderName, $services) || $services[$socialProviderName] === null || !$schema->hasColumn("social_profile", $socialProviderName . "_id")) {
+        $schema = app(Schema::class); 
+        if (!array_key_exists($socialProviderName, $services) || $services[$socialProviderName] === null || !$schema::hasColumn("social_profiles", $socialProviderName . "_id")) {
             return false;
         }
         return true;
