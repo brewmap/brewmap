@@ -11,7 +11,6 @@ use Brewmap\Exceptions\Auth\UnauthorizedException;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
 use Laravel\Socialite\Contracts\User as SocialUser;
 
 class AuthenticationService
@@ -71,8 +70,7 @@ class AuthenticationService
     private function isSocialProviderConfigured(string $socialProviderName): bool
     {
         $services = config("services");
-        $schema = app(Schema::class);
-        if (!array_key_exists($socialProviderName, $services) || $services[$socialProviderName] === null || !$schema::hasColumn("social_profiles", $socialProviderName . "_id")) {
+        if (!array_key_exists($socialProviderName, $services) || $services[$socialProviderName] === null) {
             return false;
         }
         return true;
