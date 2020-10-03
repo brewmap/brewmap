@@ -8,7 +8,7 @@ use Exception;
 use Illuminate\Http\Response;
 
 class SocialProviderConfigurationException extends Exception
-{    
+{
     protected $message;
     protected $code = Response::HTTP_NOT_IMPLEMENTED;
 

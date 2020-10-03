@@ -61,7 +61,7 @@ class AuthenticationService
             $socialProfile = new SocialProfile();
             $socialProfile->userId = $user->id;
             $socialProviderIdProperty = $socialProfile->getProperty($socialProviderName . "Id");
-            $socialProfile->$socialProviderIdProperty = $socialUser->getId();
+            $socialProfile->{$socialProviderIdProperty} = $socialUser->getId();
             $socialProfile->save();
         }
 
@@ -71,7 +71,7 @@ class AuthenticationService
     private function isSocialProviderConfigured(string $socialProviderName): bool
     {
         $services = config("services");
-        $schema = app(Schema::class); 
+        $schema = app(Schema::class);
         if (!array_key_exists($socialProviderName, $services) || $services[$socialProviderName] === null || !$schema::hasColumn("social_profiles", $socialProviderName . "_id")) {
             return false;
         }

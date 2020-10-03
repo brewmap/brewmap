@@ -42,12 +42,14 @@ class AddFacebookLogin extends Migration
                 $table->string("password")->change();
             }
         );
+
         Schema::table(
             "social_profiles",
             function (Blueprint $table): void {
                 $table->dropForeign(["user_id"]);
             }
         );
+
         Schema::dropIfExists("social_profiles");
     }
 }
