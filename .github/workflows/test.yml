@@ -34,10 +34,10 @@ jobs:
     - name: Cache composer dependencies
       uses: actions/cache@v2
       with:
-        path: vendor
-        key: ${{ runner.os }}-composer-brewmap-${{ hashFiles('**/composer.lock') }}
+        path: ~/.composer
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
-          ${{ runner.os }}-composer-brewmap-
+          ${{ runner.os }}-composer-
 
     - name: Install PHP dependencies
       run: docker-compose run php composer install --prefer-dist --no-progress --no-suggest
@@ -46,12 +46,12 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/.npm
-        key: ${{ runner.os }}-npm-brewmap-${{ hashFiles('**/package-lock.json') }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
-          ${{ runner.os }}-npm-brewmap-
+          ${{ runner.os }}-node-
 
     - name: Install JS dependencies
-      run: docker-compose run node npm install
+      run: docker-compose run -u "$(id -u):$(id -g)" node npm install
 
     - name: Build artifacts
       run: docker-compose run php php artisan nova:publish && docker-compose run php php artisan telescope:publish && docker-compose run node npm run dev
