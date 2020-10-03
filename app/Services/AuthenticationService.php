@@ -9,7 +9,6 @@ use Brewmap\Eloquent\User;
 use Brewmap\Exceptions\Auth\SocialProviderConfigurationException;
 use Brewmap\Exceptions\Auth\UnauthorizedException;
 use Illuminate\Contracts\Hashing\Hasher;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Contracts\User as SocialUser;
 
@@ -49,22 +48,34 @@ class AuthenticationService
         if (!$this->isSocialProviderConfigured($socialProviderName)) {
             throw new SocialProviderConfigurationException();
         }
-        try {
-            $user = SocialProfile::query()->where($socialProviderName . "_id", $socialUser->getId())->firstOrFail()->user;
-        } catch (ModelNotFoundException $exception) {
-            $user = new User();
-            $user->name = $socialUser->getName();
-            $user->email = $socialUser->getEmail();
-            $user->save();
+        $user = $this->matchOrCreateSocialUser($socialUser, $socialProviderName);
+        return $user->createToken($user->email)->plainTextToken;
+    }
+
+    private function matchOrCreateSocialUser(SocialUser $socialUser, string $socialProviderName): User
+    {
+        $socialProfile = SocialProfile::query()
+            ->has("user")
+            ->where("provider_id", $socialUser->getId())
+            ->first();
+
+        if ($socialProfile === null) {
+            $user = User::query()->where("email", $socialUser->getEmail())->first();
+
+            if ($user === null) {
+                $user = new User();
+                $user->name = $socialUser->getName();
+                $user->email = $socialUser->getEmail();
+                $user->save();
+            }
 
             $socialProfile = new SocialProfile();
             $socialProfile->userId = $user->id;
-            $socialProviderIdProperty = $socialProfile->getProperty($socialProviderName . "Id");
-            $socialProfile->{$socialProviderIdProperty} = $socialUser->getId();
+            $socialProfile->providerId = $socialUser->getId();
+            $socialProfile->providerName = $socialProviderName;
             $socialProfile->save();
         }
-
-        return $user->createToken($user->email)->plainTextToken;
+        return $user;
     }
 
     private function isSocialProviderConfigured(string $socialProviderName): bool
