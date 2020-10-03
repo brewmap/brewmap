@@ -17,19 +17,12 @@ class InternalHttpRequesting implements Context
     protected Request $request;
 
     /**
-     * @Given an user is requesting :url
+     * @Given a user is requesting :url
+     * @Given a user is requesting :url using :method
      */
-    public function anUserIsRequesting(string $endpoint, string $method = Request::METHOD_GET): void
+    public function aUserIsRequesting(string $endpoint, string $method = Request::METHOD_GET): void
     {
         $this->request = Request::create($endpoint, $method);
-    }
-
-    /**
-     * @Given an user is requesting :url using :method
-     */
-    public function anUserIsRequestUsingMethod(string $endpoint, string $method): void
-    {
-        $this->anUserIsRequesting($endpoint, $method);
     }
 
     /**

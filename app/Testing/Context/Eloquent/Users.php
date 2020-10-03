@@ -19,17 +19,16 @@ class Users implements Context
     protected User $user;
 
     /**
-     * @When there is an user created
+     * @When there is a user created
      */
-    public function thereIsAnUserCreated(): void
+    public function thereIsAUserCreated(): void
     {
         $this->user = UserFactory::new()->create();
     }
 
     /**
-     * @When there is an user created:
+     * @When there is a user created:
      * @When there are users created:
-     * @Given there is/are already existing user(s)
      */
     public function thereAreUsersCreated(TableNode $table): void
     {

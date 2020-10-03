@@ -6,7 +6,7 @@ Feature: Test if telescope works
       | config            | value |
       | app.env           | local |
       | telescope.enabled | true  |
-    And an user is requesting "/telescope"
+    And a user is requesting "/telescope"
     When a request is sent
     Then a response status code should be "200"
 
@@ -15,7 +15,7 @@ Feature: Test if telescope works
       | config            | value |
       | app.env           | local |
       | telescope.enabled | false |
-    And an user is requesting "/telescope"
+    And a user is requesting "/telescope"
     When a request is sent
     Then a response status code should be "404"
 
@@ -24,6 +24,6 @@ Feature: Test if telescope works
       | config            | value      |
       | app.env           | production |
       | telescope.enabled | true       |
-    And an user is requesting "/telescope"
+    And a user is requesting "/telescope"
     When a request is sent
     Then a response status code should be "403"
