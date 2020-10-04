@@ -12,7 +12,7 @@ class DatabaseFeatures implements Context
     /**
      * @Given :class seeder was ran
      */
-    public function seederWasRan($class): void
+    public function seederWasRan(string $class): void
     {
         /** @var Seeder $seeder */
         $seeder = new $class();

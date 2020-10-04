@@ -21,7 +21,7 @@
     "fruitcake/laravel-cors": "^2.0",
     "guzzlehttp/guzzle": "^7.0.1",
     "laravel/framework": "^8.0",
-    "laravel/nova": "^3.9",
+    "laravel/nova": "^3.10",
     "laravel/sanctum": "^2.6",
     "laravel/socialite": "^5.0",
     "laravel/telescope": "^4.0",
