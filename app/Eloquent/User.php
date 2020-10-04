@@ -25,7 +25,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string|null $password
  * @property string $rememberToken
  * @property Profile $profile
- * @property SocialProfile $socialProfiles
+ * @property Collection|SocialProfile[] $socialProfiles
  * @property Carbon $createdAt
  * @property Carbon $updatedAt
  */
