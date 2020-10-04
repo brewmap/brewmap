@@ -17,11 +17,20 @@ class InternalHttpRequesting implements Context
     protected Request $request;
 
     /**
-     * @Given an user is requesting :url
+     * @Given a user is requesting :url
+     * @Given a user is requesting :url using :method
      */
-    public function anUserIsRequesting(string $endpoint, string $method = Request::METHOD_GET): void
+    public function aUserIsRequesting(string $endpoint, string $method = Request::METHOD_GET): void
     {
         $this->request = Request::create($endpoint, $method);
+    }
+
+    /**
+     * @Given request body contains :key equal :value
+     */
+    public function requestBodyContains(string $key, string $value): void
+    {
+        $this->request[$key] = $value;
     }
 
     /**
@@ -56,9 +65,25 @@ class InternalHttpRequesting implements Context
     public function responseBodyShouldContain(TableNode $table): void
     {
         $response = $this->getResponseContent();
-
         foreach ($table as $row) {
             Assert::assertEquals($response[$row["key"]], $row["value"]);
         }
+    }
+
+    /**
+     * @Then a response should be of type :type
+     */
+    public function responseShouldBeOfType(string $type): void
+    {
+        Assert::assertEquals($type, get_class($this->response));
+    }
+
+    /**
+     * @Then a response should be a redirect containing :address
+     */
+    public function redirectTargetUrlShouldContain(string $address): void
+    {
+        Assert::assertTrue($this->response->isRedirect());
+        Assert::assertStringContainsString($address, $this->response->getTargetUrl());
     }
 }

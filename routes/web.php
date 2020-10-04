@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Brewmap\Http\Controllers\API\AuthenticationController;
 use Brewmap\Http\Controllers\HomeController;
 use Illuminate\Routing\Router;
 
@@ -9,3 +10,6 @@ use Illuminate\Routing\Router;
 $router = app(Router::class);
 
 $router->get("/", HomeController::class);
+
+$router->get("/facebook", [AuthenticationController::class, "redirectToFacebook"]);
+$router->get("/facebook/callback", [AuthenticationController::class, "handleFacebookCallback"]);
