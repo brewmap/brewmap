@@ -13,3 +13,10 @@ update_configs:
     target_branch: "develop"
     commit_message:
       prefix: "#58 - (js) "
+
+  - package_manager: "docker"
+    update_schedule: "daily"
+    directory: "/"
+    target_branch: "develop"
+    commit_message:
+      prefix: "#58 - (docker) "
