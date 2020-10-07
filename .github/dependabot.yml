@@ -1,22 +1,15 @@
 version: 1
 update_configs:
   - package_manager: "php:composer"
-    update_schedule: "live"
+    update_schedule: "weekly"
     directory: "/"
     target_branch: "develop"
     commit_message:
       prefix: "#58 - (php) "
 
   - package_manager: "javascript"
-    update_schedule: "live"
+    update_schedule: "weekly"
     directory: "/"
     target_branch: "develop"
     commit_message:
       prefix: "#58 - (js) "
-
-  - package_manager: "docker"
-    update_schedule: "daily"
-    directory: "/"
-    target_branch: "develop"
-    commit_message:
-      prefix: "#58 - (docker) "
