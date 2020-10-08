@@ -19,7 +19,7 @@ jobs:
 
     - name: Prepare environments for tests
       run: |
-        echo "::set-env name=CURRENT_UID::$(id -u):$(id -g)"
+        echo "CURRENT_UID=$(id -u):$(id -g)" >> $GITHUB_ENV
         ./.github/scripts/decrypt.sh
         mkdir -p .npm
       env:
