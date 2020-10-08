@@ -51,11 +51,7 @@ jobs:
           ${{ runner.os }}-node-
 
     - name: Install JS dependencies
-      run: |
-       docker-compose run -u "$(id -u):$(id -g)" node export PATH="/application/.npm/bin:${PATH}"
-       docker-compose run -u "$(id -u):$(id -g)" node chown -R $CURRENT_UID "/application/.npm"
-       docker-compose run -u "$(id -u):$(id -g)" node npm config set cache "/application/.npm" --global
-       docker-compose run -u "$(id -u):$(id -g)" node npm install
+      run: docker-compose run node npm install
 
     - name: Build artifacts
       run: docker-compose run php php artisan nova:publish && docker-compose run php php artisan telescope:publish && docker-compose run node npm run dev

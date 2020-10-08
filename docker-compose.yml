@@ -60,6 +60,11 @@ services:
     image: node:alpine3.11
     user: ${CURRENT_UID}
     working_dir: /application
+    command:
+        sh -c "
+        export PATH="/application/.npm/bin:${PATH}"
+        && chown -R ${CURRENT_UID} "/application/.npm"
+        && npm config set cache "/application/.npm" --global"
     volumes:
       - .:/application
       - .npm:/application/.npm
