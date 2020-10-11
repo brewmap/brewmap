@@ -58,10 +58,10 @@ services:
   node:
     container_name: brewmap-node
     image: node:alpine3.11
-    user: ${CURRENT_UID}
     working_dir: /application
     volumes:
       - .:/application
+      - .npm:/root/.npm
     restart: always
 
 volumes:
