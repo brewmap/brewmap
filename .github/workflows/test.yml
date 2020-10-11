@@ -2,9 +2,9 @@ name: Behaviour, code and style test
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "#97-repair-ga" ]
   pull_request:
-    branches: [ "develop" ]
+    branches: [ "#97-repair-ga" ]
 
 jobs:
   build:
@@ -21,7 +21,6 @@ jobs:
       run: |
         echo "CURRENT_UID=$(id -u):$(id -g)" >> $GITHUB_ENV
         ./.github/scripts/decrypt.sh
-        mkdir -p .npm
       env:
         decryptKey: ${{ secrets.decryptKey }}
 
@@ -51,7 +50,7 @@ jobs:
           ${{ runner.os }}-node-
 
     - name: Install JS dependencies
-      run: docker-compose run node npm install
+      run: docker-compose run node npm install --no-audit
 
     - name: Build artifacts
       run: docker-compose run php php artisan nova:publish && docker-compose run php php artisan telescope:publish && docker-compose run node npm run dev

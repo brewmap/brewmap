@@ -59,9 +59,10 @@ services:
     container_name: brewmap-node
     image: node:alpine3.11
     working_dir: /application
+    environment:
+     - NPM_CONFIG_CACHE=/application/.npm
     volumes:
       - .:/application
-      - .npm:/root/.npm
     restart: always
 
 volumes:
