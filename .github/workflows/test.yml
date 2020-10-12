@@ -2,9 +2,9 @@ name: Behaviour, code and style test
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ "develop" ]
   pull_request:
-    branches: [ develop ]
+    branches: [ "develop" ]
 
 jobs:
   build:
@@ -16,23 +16,24 @@ jobs:
 
     - name: Validate composer.json and composer.lock
       run:  composer validate
-    
+
     - name: Prepare environments for tests
       run: |
+        echo "CURRENT_UID=$(id -u):$(id -g)" >> $GITHUB_ENV
         ./.github/scripts/decrypt.sh
         mkdir -p .npm
       env:
-        decryptKey: ${{ secrets.decryptKey }}  
+        decryptKey: ${{ secrets.decryptKey }}
 
     - name: Build PHP & Database containers
       run:  docker-compose -f docker-compose.yml up -d --build
-  
+
     - name: Authenticating Nova in Continuous Integration
       run:  docker-compose run php composer config http-basic.nova.laravel.com "${{ secrets.novaUsername }}" "${{ secrets.novaPassword }}"
 
     - name: Cache composer dependencies
       uses: actions/cache@v2
-      with: 
+      with:
         path: vendor
         key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
@@ -40,18 +41,14 @@ jobs:
 
     - name: Install PHP dependencies
       run: docker-compose run php composer install --prefer-dist --no-progress --no-suggest
-    
+
     - name: Cache node modules
       uses: actions/cache@v2
-      env:
-        cache-name: cache-node-modules
       with:
-        path: node_modules
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        path: .npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
+          ${{ runner.os }}-node-
 
     - name: Install JS dependencies
       run: docker-compose run node npm install
