@@ -11,8 +11,8 @@ use Brewmap\Http\Requests\User\LoginUserRequest;
 use Brewmap\Http\Requests\User\RegisterUserRequest;
 use Brewmap\Services\AuthenticationService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Laravel\Socialite\Facades\Socialite;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class AuthenticationController extends Controller
 {

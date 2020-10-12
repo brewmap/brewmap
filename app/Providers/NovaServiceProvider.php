@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace Brewmap\Providers;
 
 use Brewmap\Eloquent\User as BrewmapUser;
+use Brewmap\Nova\Metrics\Countries;
 use Brewmap\Nova\Metrics\NewUsers;
+use Brewmap\Nova\Metrics\Users;
+use Brewmap\Nova\Resources\Country;
 use Brewmap\Nova\Resources\User;
 use Brewmap\Nova\Tools\TelescopeLink;
 use Illuminate\Support\Facades\Gate;
@@ -44,14 +47,19 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
     protected function resources(): void
     {
-        Nova::resources([
-            User::class,
-        ]);
+        Nova::resources(
+            [
+                Country::class,
+                User::class,
+            ]
+        );
     }
 
     protected function cards(): array
     {
         return [
+            new Countries(),
+            new Users(),
             new NewUsers(),
         ];
     }

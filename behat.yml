@@ -13,6 +13,8 @@ default:
 
     eloquent:
       contexts:
+        - Brewmap\Testing\Context\DatabaseFeatures
+        - Brewmap\Testing\Context\Eloquent\Countries
         - Brewmap\Testing\Context\Eloquent\Users
       paths:
         - features/eloquent

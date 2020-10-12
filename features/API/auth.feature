@@ -1,4 +1,4 @@
-@API @Auth
+@api @auth
 Feature: Test an ability to register and login
 
   Scenario: User is attempting to register using valid data

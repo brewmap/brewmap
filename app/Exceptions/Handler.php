@@ -10,16 +10,17 @@ use Throwable;
 
 class Handler extends LaravelHandler
 {
-    public function render($request, Throwable $exception): Response
+    public function render($request, Throwable $e): Response
     {
-        if ($request->isJson() || $exception instanceof ApiException) {
+        if ($request->isJson() || $e instanceof ApiException) {
             return response()->json(
                 [
-                    "message" => $exception->getMessage(),
+                    "message" => $e->getMessage(),
                 ],
-                $exception->getCode() ?? Response::HTTP_INTERNAL_SERVER_ERROR
+                $e->getCode()
             );
         }
-        return parent::render($request, $exception);
+
+        return parent::render($request, $e);
     }
 }
