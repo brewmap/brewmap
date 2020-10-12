@@ -2,9 +2,9 @@ name: Behaviour, code and style test
 
 on:
   push:
-    branches: [ "#97-repair-ga" ]
+    branches: [ "develop" ]
   pull_request:
-    branches: [ "#97-repair-ga" ]
+    branches: [ "develop" ]
 
 jobs:
   build:
