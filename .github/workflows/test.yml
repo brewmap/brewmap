@@ -41,20 +41,24 @@ jobs:
     - name: Install PHP dependencies
       run: docker-compose run php composer install --prefer-dist --no-progress --no-suggest
 
-    - name: Cache node modules
+    - name: Get npm cache directory
+      id: npm-cache
+      run: |
+        echo "::set-output name=dir::$(npm config get cache)"
+
+    - name: Cache npm dependencies
       uses: actions/cache@v2
       with:
-        path: ./.npm
+        path: ${{ steps.npm-cache.outputs.dir }}
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
-          ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           ${{ runner.os }}-node-
 
     - name: Install JS dependencies
-      run: docker-compose run node npm install --no-audit
+      run:  npm install --no-audit
 
     - name: Build artifacts
-      run: docker-compose run php php artisan nova:publish && docker-compose run php php artisan telescope:publish && docker-compose run node npm run dev
+      run: docker-compose run php php artisan nova:publish && docker-compose run php php artisan telescope:publish && npm run dev
 
     - name: Run test suite
       run: docker-compose run php composer behat
