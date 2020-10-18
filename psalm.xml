@@ -26,6 +26,7 @@
     <issueHandlers>
         <PropertyNotSetInConstructor>
             <errorLevel type="suppress">
+                <directory name="app/Console/Commands"/>
                 <directory name="app/Nova/Metrics"/>
                 <directory name="app/Http/Requests/"/>
                 <directory name="app/Nova/Tools"/>
