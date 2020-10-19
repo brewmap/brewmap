@@ -22,6 +22,6 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
     "node-forge": "^0.10.0",
-    "tailwindcss": "^1.8.13"
+    "tailwindcss": "^1.9.4"
   }
 }
