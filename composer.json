@@ -37,7 +37,7 @@
     "phpunit/phpunit": "^9.3",
     "psalm/plugin-laravel": "^1.4",
     "symplify/easy-coding-standard": "^8.2",
-    "vimeo/psalm": "^3.15.0"
+    "vimeo/psalm": "^4.0.0"
   },
   "config": {
     "optimize-autoloader": true,
