@@ -9,6 +9,12 @@ Run containers:
 CURRENT_UID=$(id -u):$(id -g) docker-compose up -d --build
 ```
 
+Fetch dependencies:
+```shell script
+composer install
+npm install
+```
+
 Generate application key:
 ```shell script
 php artisan key:generate
