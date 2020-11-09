@@ -1400,17 +1400,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "v3.14.0",
+            "version": "v3.13.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "89cf83f128bfc276331a83a702ab4a4b615e0293"
+                "reference": "b0a13f6c988b504275bbc82367f853bc78257256"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-89cf83f128bfc276331a83a702ab4a4b615e0293-zip-2f6e3c.zip",
-                "reference": "89cf83f128bfc276331a83a702ab4a4b615e0293",
-                "shasum": "ccf9b21c4a8c4efbfb801a63ec852aeeab6c0dd7"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-b0a13f6c988b504275bbc82367f853bc78257256-zip-5aa88d.zip",
+                "reference": "b0a13f6c988b504275bbc82367f853bc78257256",
+                "shasum": "984f76ccf7b966250da9747f46db9dd2ab3fffe5"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -1430,7 +1430,7 @@
                 "laravel/legacy-factories": "^1.0",
                 "laravel/nova-dusk-suite": "dev-master",
                 "mockery/mockery": "^1.0",
-                "orchestra/testbench-dusk": "^6.2.1",
+                "orchestra/testbench-dusk": "^6.1",
                 "phpunit/phpunit": "^8.4",
                 "predis/predis": "^1.1"
             },
@@ -1464,10 +1464,6 @@
                     "@php -r \"file_exists('phpunit.dusk.xml') || copy('phpunit.dusk.xml.dist', 'phpunit.dusk.xml'); \"",
                     "@php -r \"if (file_exists('.env.dusk')) { copy('.env.dusk', 'vendor/laravel/nova-dusk-suite/.env'); } else { copy('.env.dusk.example', 'vendor/laravel/nova-dusk-suite/.env'); }\""
                 ],
-                "dusk:assets": [
-                    "yarn run prod",
-                    "./vendor/bin/testbench-dusk nova:publish"
-                ],
                 "dusk:test": [
                     "./vendor/bin/phpunit -c phpunit.dusk.xml"
                 ]
@@ -1486,20 +1482,20 @@
                 "admin",
                 "laravel"
             ],
-            "time": "2020-10-27T20:28:22+00:00"
+            "time": "2020-10-20T16:54:09+00:00"
         },
         {
             "name": "laravel/sanctum",
-            "version": "v2.8.0",
+            "version": "v2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sanctum.git",
-                "reference": "b6420b0d4beace16f6e8248b221fd0b0deee47a1"
+                "reference": "43f05df591e5099563520ab018cca4ac383681cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/b6420b0d4beace16f6e8248b221fd0b0deee47a1",
-                "reference": "b6420b0d4beace16f6e8248b221fd0b0deee47a1",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/43f05df591e5099563520ab018cca4ac383681cd",
+                "reference": "43f05df591e5099563520ab018cca4ac383681cd",
                 "shasum": ""
             },
             "require": {
@@ -1507,12 +1503,12 @@
                 "illuminate/contracts": "^6.9|^7.0|^8.0",
                 "illuminate/database": "^6.9|^7.0|^8.0",
                 "illuminate/support": "^6.9|^7.0|^8.0",
-                "php": "^7.2|^8.0"
+                "php": "^7.2"
             },
             "require-dev": {
                 "mockery/mockery": "^1.0",
                 "orchestra/testbench": "^4.0|^5.0|^6.0",
-                "phpunit/phpunit": "^8.0|^9.3"
+                "phpunit/phpunit": "^8.0"
             },
             "type": "library",
             "extra": {
@@ -1546,24 +1542,20 @@
                 "laravel",
                 "sanctum"
             ],
-            "support": {
-                "issues": "https://github.com/laravel/sanctum/issues",
-                "source": "https://github.com/laravel/sanctum"
-            },
-            "time": "2020-11-03T19:11:54+00:00"
+            "time": "2020-10-20T18:37:43+00:00"
         },
         {
             "name": "laravel/socialite",
-            "version": "v5.1.0",
+            "version": "v5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "14082c665186348028e5bde17ab33b21b36dac79"
+                "reference": "8197acf2fe5446a2800b95d250c1da72fd6051bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/14082c665186348028e5bde17ab33b21b36dac79",
-                "reference": "14082c665186348028e5bde17ab33b21b36dac79",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/8197acf2fe5446a2800b95d250c1da72fd6051bc",
+                "reference": "8197acf2fe5446a2800b95d250c1da72fd6051bc",
                 "shasum": ""
             },
             "require": {
@@ -1572,13 +1564,13 @@
                 "illuminate/http": "^6.0|^7.0|^8.0",
                 "illuminate/support": "^6.0|^7.0|^8.0",
                 "league/oauth1-client": "^1.0",
-                "php": "^7.2|^8.0"
+                "php": "^7.2"
             },
             "require-dev": {
                 "illuminate/contracts": "^6.0|^7.0",
                 "mockery/mockery": "^1.0",
                 "orchestra/testbench": "^4.0|^5.0|^6.0",
-                "phpunit/phpunit": "^8.0|^9.3"
+                "phpunit/phpunit": "^8.0"
             },
             "type": "library",
             "extra": {
@@ -1615,30 +1607,26 @@
                 "laravel",
                 "oauth"
             ],
-            "support": {
-                "issues": "https://github.com/laravel/socialite/issues",
-                "source": "https://github.com/laravel/socialite"
-            },
-            "time": "2020-11-03T19:24:43+00:00"
+            "time": "2020-10-21T12:45:02+00:00"
         },
         {
             "name": "laravel/telescope",
-            "version": "v4.3.1",
+            "version": "v4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/telescope.git",
-                "reference": "7e9d9fdab18b86db6c8368f2a026ff695c8287e9"
+                "reference": "86665787a7183f85d9e4551ec059f239e48af89c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/telescope/zipball/7e9d9fdab18b86db6c8368f2a026ff695c8287e9",
-                "reference": "7e9d9fdab18b86db6c8368f2a026ff695c8287e9",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/86665787a7183f85d9e4551ec059f239e48af89c",
+                "reference": "86665787a7183f85d9e4551ec059f239e48af89c",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "laravel/framework": "^8.2",
-                "php": "^7.3|^8.0",
+                "laravel/framework": "^8.0",
+                "php": "^7.3",
                 "symfony/var-dumper": "^5.0"
             },
             "require-dev": {
@@ -1655,8 +1643,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Laravel\\Telescope\\": "src/",
-                    "Laravel\\Telescope\\Database\\Factories\\": "database/factories/"
+                    "Laravel\\Telescope\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1679,11 +1666,7 @@
                 "laravel",
                 "monitoring"
             ],
-            "support": {
-                "issues": "https://github.com/laravel/telescope/issues",
-                "source": "https://github.com/laravel/telescope/tree/v4.3.1"
-            },
-            "time": "2020-11-05T12:12:19+00:00"
+            "time": "2020-10-20T19:07:01+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -6142,36 +6125,36 @@
         },
         {
             "name": "behat/behat",
-            "version": "v3.8.1",
+            "version": "v3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Behat.git",
-                "reference": "fbb065457d523d9856d4b50775b4151a7598b510"
+                "reference": "08052f739619a9e9f62f457a67302f0715e6dd13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Behat/zipball/fbb065457d523d9856d4b50775b4151a7598b510",
-                "reference": "fbb065457d523d9856d4b50775b4151a7598b510",
+                "url": "https://api.github.com/repos/Behat/Behat/zipball/08052f739619a9e9f62f457a67302f0715e6dd13",
+                "reference": "08052f739619a9e9f62f457a67302f0715e6dd13",
                 "shasum": ""
             },
             "require": {
                 "behat/gherkin": "^4.6.0",
                 "behat/transliterator": "^1.2",
                 "ext-mbstring": "*",
-                "php": "^7.2 || ^8.0",
+                "php": ">=5.3.3",
                 "psr/container": "^1.0",
-                "symfony/config": "^4.4 || ^5.0",
-                "symfony/console": "^4.4 || ^5.0",
-                "symfony/dependency-injection": "^4.4 || ^5.0",
-                "symfony/event-dispatcher": "^4.4 || ^5.0",
-                "symfony/translation": "^4.4 || ^5.0",
-                "symfony/yaml": "^4.4 || ^5.0"
+                "symfony/config": "^2.7.51 || ^3.0 || ^4.0 || ^5.0",
+                "symfony/console": "^2.7.51 || ^2.8.33 || ^3.3.15 || ^3.4.3 || ^4.0.3 || ^5.0",
+                "symfony/dependency-injection": "^2.7.51 || ^3.0 || ^4.0 || ^5.0",
+                "symfony/event-dispatcher": "^2.7.51 || ^3.0 || ^4.0 || ^5.0",
+                "symfony/translation": "^2.7.51 || ^3.0 || ^4.0 || ^5.0",
+                "symfony/yaml": "^2.7.51 || ^3.0 || ^4.0 || ^5.0"
             },
             "require-dev": {
                 "container-interop/container-interop": "^1.2",
                 "herrera-io/box": "~1.6.1",
-                "phpunit/phpunit": "^8.5 || ^9.0",
-                "symfony/process": "^4.4 || ^5.0"
+                "phpunit/phpunit": "^4.8.36 || ^6.5.14 || ^7.5.20",
+                "symfony/process": "~2.5 || ^3.0 || ^4.0 || ^5.0"
             },
             "suggest": {
                 "ext-dom": "Needed to output test results in JUnit format."
@@ -6182,7 +6165,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.8.x-dev"
+                    "dev-master": "3.6.x-dev"
                 }
             },
             "autoload": {
@@ -6202,7 +6185,7 @@
                     "homepage": "http://everzet.com"
                 }
             ],
-            "description": "Scenario-oriented BDD framework for PHP",
+            "description": "Scenario-oriented BDD framework for PHP 5.3",
             "homepage": "http://behat.org/",
             "keywords": [
                 "Agile",
@@ -6218,11 +6201,7 @@
                 "symfony",
                 "testing"
             ],
-            "support": {
-                "issues": "https://github.com/Behat/Behat/issues",
-                "source": "https://github.com/Behat/Behat/tree/v3.8.1"
-            },
-            "time": "2020-11-07T15:55:18+00:00"
+            "time": "2020-06-03T13:08:44+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -6400,16 +6379,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "1.10.17",
+            "version": "1.10.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "09d42e18394d8594be24e37923031c4b7442a1cb"
+                "reference": "47c841ba3b2d3fc0b4b13282cf029ea18b66d78b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/09d42e18394d8594be24e37923031c4b7442a1cb",
-                "reference": "09d42e18394d8594be24e37923031c4b7442a1cb",
+                "url": "https://api.github.com/repos/composer/composer/zipball/47c841ba3b2d3fc0b4b13282cf029ea18b66d78b",
+                "reference": "47c841ba3b2d3fc0b4b13282cf029ea18b66d78b",
                 "shasum": ""
             },
             "require": {
@@ -6476,11 +6455,6 @@
                 "dependency",
                 "package"
             ],
-            "support": {
-                "irc": "irc://irc.freenode.org/composer",
-                "issues": "https://github.com/composer/composer/issues",
-                "source": "https://github.com/composer/composer/tree/1.10.17"
-            },
             "funding": [
                 {
                     "url": "https://packagist.com",
@@ -6495,7 +6469,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-30T21:31:58+00:00"
+            "time": "2020-09-09T09:46:34+00:00"
         },
         {
             "name": "composer/package-versions-deprecated",
@@ -11497,9 +11471,6 @@
                 "MIT"
             ],
             "description": "Use Coding Standard with 0-knowledge of PHP-CS-Fixer and PHP_CodeSniffer.",
-            "support": {
-                "source": "https://github.com/symplify/easy-coding-standard/tree/8.3.13"
-            },
             "funding": [
                 {
                     "url": "https://github.com/tomasvotruba",
