@@ -20,9 +20,7 @@ return [
         "web",
         Authorize::class,
     ],
-    "ignore_paths" => [
-        "nova-api*",
-    ],
+    "ignore_paths" => [],
     "ignore_commands" => [],
     "watchers" => [
         Watchers\CacheWatcher::class => env("TELESCOPE_CACHE_WATCHER", true),
