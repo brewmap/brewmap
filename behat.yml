@@ -8,6 +8,7 @@ default:
       contexts:
         - Brewmap\Testing\Context\Application\Config
         - Brewmap\Testing\Context\InternalHttpRequesting
+        - Brewmap\Testing\Context\Eloquent\Users
       paths:
         - features/http
 
