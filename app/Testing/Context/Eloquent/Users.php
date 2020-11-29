@@ -70,7 +70,7 @@ class Users implements Context
         $guard = app(Guard::class);
 
         /** @var Authenticatable $user */
-        $user = User::query()->where('email', $email)->first();
+        $user = User::query()->where("email", $email)->first();
 
         $guard->setUser($user);
     }

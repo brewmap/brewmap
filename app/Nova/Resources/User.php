@@ -36,7 +36,7 @@ class User extends Resource
                 ->rules(["required", "email", "max:254"])
                 ->creationRules(["unique:users,email"])
                 ->updateRules(["unique:users,email,{{resourceId}}"]),
-            Boolean::make('Administrator', 'is_admin'),
+            Boolean::make("Administrator", "is_admin"),
             DateTime::make("Email verified at")
                 ->sortable()
                 ->hideWhenCreating()
