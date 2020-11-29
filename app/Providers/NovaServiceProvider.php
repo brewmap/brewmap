@@ -37,7 +37,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         Gate::define(
             "viewNova",
             function (BrewmapUser $user): bool {
-                return true;
+                return $user->isAdmin;
             }
         );
     }
