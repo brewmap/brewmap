@@ -14,10 +14,19 @@ class User
         if ($user->id === null) {
             $user->id = Str::uuid()->toString();
         }
+
+        if ($this->isFirstUser()) {
+            $user->isAdmin = true;
+        }
     }
 
     public function created(UserModel $user): void
     {
         $user->profile()->create();
+    }
+
+    protected function isFirstUser(): bool
+    {
+        return UserModel::query()->count() === 0;
     }
 }
