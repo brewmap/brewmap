@@ -9,6 +9,8 @@ use Behat\Gherkin\Node\TableNode;
 use Brewmap\Eloquent\Profile;
 use Brewmap\Eloquent\User;
 use Database\Factories\UserFactory;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Guard;
 use KrzysztofRewak\Larahat\Helpers\RefreshingDatabase;
 use PHPUnit\Framework\Assert;
 
@@ -57,5 +59,19 @@ class Users implements Context
             "%x%x%x%x%x%x%x%x-%x%x%x%x-%x%x%x%x-%x%x%x%x-%x%x%x%x%x%x%x%x%x%x%x%x",
             $this->user->id ?? ""
         );
+    }
+
+    /**
+     * @Given user is logged in as :email
+     */
+    public function userIsLoggedInAs(string $email): void
+    {
+        /** @var Guard $guard */
+        $guard = app(Guard::class);
+
+        /** @var Authenticatable $user */
+        $user = User::query()->where('email', $email)->first();
+
+        $guard->setUser($user);
     }
 }
