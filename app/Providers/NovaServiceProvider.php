@@ -34,12 +34,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
     protected function gate(): void
     {
-        Gate::define(
-            "viewNova",
-            function (BrewmapUser $user): bool {
-                return $user->isAdmin;
-            }
-        );
+        Gate::define("viewNova", fn (BrewmapUser $user): bool => $user->isAdmin);
     }
 
     protected function resources(): void
