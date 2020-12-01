@@ -9,6 +9,8 @@ use Behat\Gherkin\Node\TableNode;
 use Brewmap\Eloquent\Profile;
 use Brewmap\Eloquent\User;
 use Database\Factories\UserFactory;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Guard;
 use KrzysztofRewak\Larahat\Helpers\RefreshingDatabase;
 use PHPUnit\Framework\Assert;
 
@@ -17,6 +19,20 @@ class Users implements Context
     use RefreshingDatabase;
 
     protected User $user;
+
+    /**
+     * @Given user is logged in as :email
+     */
+    public function userIsLoggedInAs(string $email): void
+    {
+        /** @var Guard $guard */
+        $guard = app(Guard::class);
+
+        /** @var Authenticatable $user */
+        $user = User::query()->where("email", $email)->first();
+
+        $guard->setUser($user);
+    }
 
     /**
      * @When there is a user created
@@ -57,5 +73,17 @@ class Users implements Context
             "%x%x%x%x%x%x%x%x-%x%x%x%x-%x%x%x%x-%x%x%x%x-%x%x%x%x%x%x%x%x%x%x%x%x",
             $this->user->id ?? ""
         );
+    }
+
+    /**
+     * @Then there should be is_admin assigned:
+     */
+    public function thereShouldBeIsAdminAssigned(TableNode $table): void
+    {
+        foreach ($table->getHash() as $data) {
+            /** @var User $user */
+            $user = User::query()->find($data["id"]);
+            Assert::assertEquals($data["is_admin"], (int)$user->isAdmin);
+        }
     }
 }

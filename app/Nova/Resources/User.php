@@ -6,6 +6,7 @@ namespace Brewmap\Nova\Resources;
 
 use Brewmap\Eloquent\User as EloquentUser;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
@@ -35,6 +36,7 @@ class User extends Resource
                 ->rules(["required", "email", "max:254"])
                 ->creationRules(["unique:users,email"])
                 ->updateRules(["unique:users,email,{{resourceId}}"]),
+            Boolean::make("Administrator", "is_admin"),
             DateTime::make("Email verified at")
                 ->sortable()
                 ->hideWhenCreating()

@@ -23,6 +23,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $email
  * @property string|null $emailVerifiedAt
  * @property string|null $password
+ * @property boolean $isAdmin
  * @property string $rememberToken
  * @property Profile $profile
  * @property Collection|SocialProfile[] $socialProfiles
@@ -38,8 +39,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     use MustVerifyEmail;
     use Notifiable;
 
-    protected $casts = ["email_verified_at" => "datetime"];
-    protected $hidden = ["password", "remember_token"];
+    protected $casts = ["email_verified_at" => "datetime", "is_admin" => "boolean"];
+    protected $hidden = ["password", "remember_token", "is_admin"];
     protected $fillable = ["email", "password", "name"];
 
     public function profile(): HasOne
