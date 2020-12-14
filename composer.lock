@@ -1612,16 +1612,16 @@
         },
         {
             "name": "laravel/telescope",
-            "version": "v4.3.1",
+            "version": "v4.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/telescope.git",
-                "reference": "7e9d9fdab18b86db6c8368f2a026ff695c8287e9"
+                "reference": "cb98594bc53b183f5bf2896e55d5015510941187"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/telescope/zipball/7e9d9fdab18b86db6c8368f2a026ff695c8287e9",
-                "reference": "7e9d9fdab18b86db6c8368f2a026ff695c8287e9",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/cb98594bc53b183f5bf2896e55d5015510941187",
+                "reference": "cb98594bc53b183f5bf2896e55d5015510941187",
                 "shasum": ""
             },
             "require": {
@@ -1668,7 +1668,7 @@
                 "laravel",
                 "monitoring"
             ],
-            "time": "2020-11-05T12:12:19+00:00"
+            "time": "2020-12-08T19:29:18+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -5535,16 +5535,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v5.1.8",
+            "version": "v5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "4e13f3fcefb1fcaaa5efb5403581406f4e840b9a"
+                "reference": "173a79c462b1c81e1fa26129f71e41333d846b26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/4e13f3fcefb1fcaaa5efb5403581406f4e840b9a",
-                "reference": "4e13f3fcefb1fcaaa5efb5403581406f4e840b9a",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/173a79c462b1c81e1fa26129f71e41333d846b26",
+                "reference": "173a79c462b1c81e1fa26129f71e41333d846b26",
                 "shasum": ""
             },
             "require": {
@@ -5616,7 +5616,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-27T10:11:13+00:00"
+            "time": "2020-11-27T00:39:34+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
