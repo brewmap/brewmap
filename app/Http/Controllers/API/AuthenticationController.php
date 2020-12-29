@@ -11,8 +11,8 @@ use Brewmap\Http\Requests\User\LoginUserRequest;
 use Brewmap\Http\Requests\User\RegisterUserRequest;
 use Brewmap\Services\AuthenticationService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Laravel\Socialite\Facades\Socialite;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class AuthenticationController extends Controller
 {
@@ -22,13 +22,17 @@ class AuthenticationController extends Controller
     public function login(LoginUserRequest $request, AuthenticationService $authenticationService): JsonResponse
     {
         $token = $authenticationService->login($request);
-        return response()->json(["token" => $token]);
+        return response()->json([
+            "token" => $token,
+        ]);
     }
 
     public function register(RegisterUserRequest $request, AuthenticationService $authenticationService): JsonResponse
     {
         $authenticationService->register($request->validated());
-        return response()->json(["message" => __("auth.register_success")]);
+        return response()->json([
+            "message" => __("auth.register_success"),
+        ]);
     }
 
     public function redirectToFacebook(): RedirectResponse
@@ -43,6 +47,9 @@ class AuthenticationController extends Controller
     {
         $facebookUser = Socialite::driver("facebook")->user();
         $token = $authenticationService->getTokenBySocialLogin($facebookUser, "facebook");
-        return response()->json(["token" => $token]);
+
+        return response()->json([
+            "token" => $token,
+        ]);
     }
 }

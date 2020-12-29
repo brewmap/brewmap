@@ -9,6 +9,7 @@ use Behat\Gherkin\Node\TableNode;
 use Illuminate\Http\Request;
 use KrzysztofRewak\Larahat\Helpers\SimpleRequesting;
 use PHPUnit\Framework\Assert;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class InternalHttpRequesting implements Context
 {
@@ -65,6 +66,7 @@ class InternalHttpRequesting implements Context
     public function responseBodyShouldContain(TableNode $table): void
     {
         $response = $this->getResponseContent();
+
         foreach ($table as $row) {
             Assert::assertEquals($response[$row["key"]], $row["value"]);
         }
@@ -83,7 +85,10 @@ class InternalHttpRequesting implements Context
      */
     public function redirectTargetUrlShouldContain(string $address): void
     {
-        Assert::assertTrue($this->response->isRedirect());
-        Assert::assertStringContainsString($address, $this->response->getTargetUrl());
+        $response = $this->response;
+        Assert::assertTrue($response->isRedirect());
+
+        /** @var RedirectResponse $response */
+        Assert::assertStringContainsString($address, $response->getTargetUrl());
     }
 }

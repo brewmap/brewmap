@@ -11,6 +11,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\Access\Authorizable;
@@ -39,7 +40,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     use MustVerifyEmail;
     use Notifiable;
 
-    protected $casts = ["email_verified_at" => "datetime", "is_admin" => "boolean"];
+    protected $casts = [
+        "email_verified_at" => "datetime",
+        "is_admin" => "boolean",
+    ];
     protected $hidden = ["password", "remember_token", "is_admin"];
     protected $fillable = ["email", "password", "name"];
 
