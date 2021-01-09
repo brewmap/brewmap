@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 use Brewmap\Http\Controllers\API\ApplicationController;
 use Brewmap\Http\Controllers\API\AuthenticationController;
-use Brewmap\Http\Controllers\API\ProfileController;
+use Brewmap\Http\Controllers\API\Profile\ProfileController;
+use Brewmap\Http\Controllers\API\User\PasswordController;
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
@@ -20,4 +21,5 @@ $router->group([
 ], function () use ($router): void {
     $router->get("/profile", [ProfileController::class, "edit"]);
     $router->patch("/profile", [ProfileController::class, "update"]);
+    $router->patch("/password", [PasswordController::class, "update"]);
 });

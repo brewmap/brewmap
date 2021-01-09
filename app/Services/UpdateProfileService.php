@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Brewmap\Services;
 
-class ProfileUpdateService
+class UpdateProfileService
 {
     public function updateProfileData(array $input): void
     {
