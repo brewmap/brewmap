@@ -9,6 +9,7 @@ use Brewmap\Http\Requests\BaseRules;
 class BirthdayRules extends BaseRules
 {
     protected static array $rules = [
-        "date",
+        "string",
+        "nullable"
     ];
 }

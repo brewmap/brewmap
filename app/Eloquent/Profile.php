@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Brewmap\Eloquent;
 
 use Carbon\Carbon;
+use Carbon\Exceptions\InvalidFormatException;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
