@@ -11,7 +11,6 @@ Feature: Test an ability to update profile data
     And a user is requesting "api/profile" using "DELETE"
     When a request is sent
     Then a response status code should be "405"
-
     
   Scenario: User is attempting to update profile data
     Given user is logged in as "user@example.com"
@@ -22,7 +21,6 @@ Feature: Test an ability to update profile data
     Then a response status code should be "200"
     And response body should contain:
       | message         | Successfully updated profile data   |
-
       
   Scenario: User is attempting to edit profile data
     Given user is logged in as "user@example.com"

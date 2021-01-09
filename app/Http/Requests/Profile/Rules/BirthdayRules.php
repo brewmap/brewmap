@@ -10,6 +10,6 @@ class BirthdayRules extends BaseRules
 {
     protected static array $rules = [
         "string",
-        "nullable"
+        "nullable",
     ];
 }

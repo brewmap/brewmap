@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Brewmap\Http\Controllers\API;
+namespace Brewmap\Http\Controllers\API\Profile;
 
 use Brewmap\Http\Controllers\Controller;
 use Brewmap\Http\Requests\Profile\UpdateProfileRequest;
 use Brewmap\Http\Resources\Profile as ProfileResource;
-use Brewmap\Services\ProfileUpdateService;
+use Brewmap\Services\UpdateProfileService;
 use Illuminate\Http\JsonResponse;
 
 class ProfileController extends Controller
@@ -24,11 +24,12 @@ class ProfileController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the profile data in storage.
      *
      * @param \Illuminate\Http\Request $request
+     * @throws
      */
-    public function update(UpdateProfileRequest $request, ProfileUpdateService $service): JsonResponse
+    public function update(UpdateProfileRequest $request, UpdateProfileService $service): JsonResponse
     {
         $service->updateProfileData($request->validated());
         return response()->json([
