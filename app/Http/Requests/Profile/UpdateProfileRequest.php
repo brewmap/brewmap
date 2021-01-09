@@ -10,6 +10,7 @@ use Brewmap\Http\Requests\Profile\Rules\PublicNameRules;
 
 class UpdateProfileRequest extends BaseRequest
 {
+    
     public function rules(): array
     {
         return [

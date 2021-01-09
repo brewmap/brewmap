@@ -27,7 +27,6 @@ class ProfileController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param Brewmap\Services\ProfileUpdateService $service
      */
     public function update(UpdateProfileRequest $request, ProfileUpdateService $service): JsonResponse
     {

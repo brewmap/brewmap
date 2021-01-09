@@ -19,5 +19,5 @@ $router->group([
     "middleware" => "auth:sanctum",
 ], function () use ($router): void {
     $router->get("/profile", [ProfileController::class, "edit"]);
-    $router->put("/profile/updated", [ProfileController::class, "update"]);
+    $router->patch("/profile", [ProfileController::class, "update"]);
 });
