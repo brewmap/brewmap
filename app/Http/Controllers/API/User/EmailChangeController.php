@@ -14,23 +14,9 @@ use Illuminate\Http\Request;
 class EmailChangeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     */
-    // public function __construct()
-    // {
-    //     // Only the authenticated user can change its email, but he should be able
-    //     // to verify his email address using other device without having to be
-    //     // authenticated. This happens a lot when they confirm by phone.
-    //     $this->middleware('auth')->only('change');
-
-    //     // A signed URL will prevent anyone except the User to change his email.
-    //     $this->middleware('signed')->only('verify');
-    // }
-
-    /**
      * Changes the user Email Address for a new one
      *
-     * @throws
+     * @throws UpdateEmailRequest $exception
      */
     public function change(UpdateEmailRequest $request, UpdateEmailService $service): JsonResponse
     {
@@ -44,6 +30,7 @@ class EmailChangeController extends Controller
      * Verifies and completes the Email change
      *
      * @param UpdateEmailRequest $request
+     * @throws 
      */
     public function verify(Request $request, User $user, string $email, UpdateEmailService $service): JsonResponse
     {

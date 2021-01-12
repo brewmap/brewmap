@@ -6,10 +6,11 @@ namespace Brewmap\Http\Requests\Profile\Rules;
 
 use Brewmap\Http\Requests\BaseRules;
 
-class BirthdayRules extends BaseRules
+class AvatarFileRules extends BaseRules
 {
     protected static array $rules = [
-        "date",
-        "nullable",
+        "required",
+        "mimes:jpg,png,jpeg,gif",
+        "max:2048",
     ];
 }

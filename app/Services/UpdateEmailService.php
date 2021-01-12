@@ -23,6 +23,8 @@ class UpdateEmailService
 
     /**
      * Update Email Address
+     *
+     * @throws NewEmailChangingException
      */
     public function updateEmail(User $user, String $email): void
     {

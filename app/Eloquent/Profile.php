@@ -6,6 +6,7 @@ namespace Brewmap\Eloquent;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * @property string $userId
@@ -25,5 +26,18 @@ class Profile extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @throws 
+     */
+    public function setBirthdayAttribute($value): void
+    {
+        $this->attributes["birthday"] = Carbon::parse($value);
+    }
+
+    public function getAvatarPathAttribute($value): string
+    {
+        return Storage::url($value);
     }
 }
