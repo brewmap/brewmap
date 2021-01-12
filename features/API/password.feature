@@ -35,7 +35,7 @@ Feature: Test an ability to update user password data
     When a request is sent
     Then a response status code should be "422"
     And response body should contain:
-      | password         | The password confirmation does not matchh   |
+      | password         | The password confirmation does not match   |
 
   Scenario: User is attempting to update password
     Given user is logged in as "user@example.com"
