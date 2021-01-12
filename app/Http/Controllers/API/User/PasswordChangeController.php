@@ -9,13 +9,13 @@ use Brewmap\Http\Requests\User\UpdatePasswordRequest;
 use Brewmap\Services\UpdatePasswordService;
 use Illuminate\Http\JsonResponse;
 
-class PasswordController extends Controller
+class PasswordChangeController extends Controller
 {
     /**
      * Update the user password with cofirmation old password.
      *
      * @param \Illuminate\Http\Request $request
-     * @throws
+     * @throws OldPasswordMismatchException
      */
     public function update(UpdatePasswordRequest $request, UpdatePasswordService $service): JsonResponse
     {
