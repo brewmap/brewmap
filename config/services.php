@@ -8,8 +8,4 @@ return [
         "client_secret" => env("FACEBOOK_SECRET"),
         "redirect" => env("APP_URL") . "/facebook/callback/",
     ],
-    "mailtrap" => [
-        "default_inbox" => "",
-        "secret" => "",
-    ],
 ];
