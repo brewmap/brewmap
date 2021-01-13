@@ -25,9 +25,6 @@ class ProfileController extends Controller
 
     /**
      * Update the profile data in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @throws
      */
     public function update(UpdateProfileRequest $request, UpdateProfileService $service): JsonResponse
     {

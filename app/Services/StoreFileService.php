@@ -8,8 +8,7 @@ use Illuminate\Http\Request;
 
 class StoreFileService
 {
-    protected $pathToFile;
-    protected $file;
+    protected Object $file;
 
     public function __construct(Request $request)
     {

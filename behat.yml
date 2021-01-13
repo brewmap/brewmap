@@ -23,6 +23,5 @@ default:
         - Brewmap\Testing\Context\InternalHttpRequesting
         - Brewmap\Testing\Context\MailSending
         - Brewmap\Testing\Context\Eloquent\Users
-        - Brewmap\Testing\Context\Eloquent\Profile
       paths:
         - features/API

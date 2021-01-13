@@ -16,7 +16,7 @@ class EmailChangeController extends Controller
     /**
      * Changes the user Email Address for a new one
      *
-     * @throws UpdateEmailRequest $exception
+     * @psalm-suppress MissingThrowsDocblock
      */
     public function change(UpdateEmailRequest $request, UpdateEmailService $service): JsonResponse
     {
@@ -30,7 +30,7 @@ class EmailChangeController extends Controller
      * Verifies and completes the Email change
      *
      * @param UpdateEmailRequest $request
-     * @throws 
+     * @psalm-suppress MissingThrowsDocblock
      */
     public function verify(Request $request, User $user, string $email, UpdateEmailService $service): JsonResponse
     {

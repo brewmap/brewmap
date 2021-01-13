@@ -13,6 +13,10 @@ class UploadAvatarController extends Controller
 {
     private $pathToAvatar;
 
+    /**
+     * Update the profile data in storage.
+     */
+
     public function store(UpdateProfileAvatarRequest $request, StoreFileService $service): JsonResponse
     {
         $this->pathToAvatar = $service->storeFile("users");
