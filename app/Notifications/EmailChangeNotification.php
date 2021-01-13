@@ -11,16 +11,17 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\URL;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class EmailChangeNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
     /**
      * The user Email
-     *
-     * @var string
      */
-    protected $userId;
+    protected string $userId;
 
     /**
      * Create a new notification instance.

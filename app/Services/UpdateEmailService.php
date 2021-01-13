@@ -15,7 +15,7 @@ class UpdateEmailService
     /**
      * Changes the user Email Address for a new one
      */
-    public function sendNotifyForNewEmail(String $email): void
+    public function sendNotifyForNewEmail(string $email): void
     {
         Notification::route("mail", $email)
             ->notify(new EmailChangeNotification(auth()->user()->id));

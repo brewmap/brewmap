@@ -23,7 +23,6 @@ class UpdatePasswordService
     {
         if (!$this->hash->check($input["old_password"], auth()->user()->password)) {
             throw new OldPasswordMismatchException();
-            exit;
         }
         auth()->user()->update([
             "password" => $this->hash->make($input["password"]),

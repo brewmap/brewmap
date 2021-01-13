@@ -29,7 +29,7 @@ class Profile extends Model
     }
 
     /**
-     * @throws 
+     * @psalm-suppress MissingThrowsDocblock
      */
     public function setBirthdayAttribute($value): void
     {

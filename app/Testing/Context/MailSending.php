@@ -13,7 +13,6 @@ class MailSending implements Context
 {
     protected $signedUrl;
 
-
     public function __construct()
     {
         Notification::fake();
