@@ -9,18 +9,18 @@ use Brewmap\Http\Requests\Profile\UpdateProfileAvatarRequest;
 use Brewmap\Services\StoreFileService;
 use Illuminate\Http\JsonResponse;
 
+/**
+ * @psalm-suppress MissingConstructor
+ */
 class UploadAvatarController extends Controller
 {
-    private $pathToAvatar;
-
-    /**
-     * Update the profile data in storage.
-     */
+    protected string $pathToAvatar;
 
     public function store(UpdateProfileAvatarRequest $request, StoreFileService $service): JsonResponse
     {
         $this->pathToAvatar = $service->storeFile("users");
-        return response()->json([
+
+        return new JsonResponse([
             "path_to_file" => $this->pathToAvatar,
         ]);
     }

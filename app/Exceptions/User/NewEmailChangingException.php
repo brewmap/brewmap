@@ -9,6 +9,6 @@ use Illuminate\Http\Response;
 
 class NewEmailChangingException extends ApiException
 {
-    protected $message = "This email is being used by another user!";
+    protected $message = "Please choose another email address.";
     protected $code = Response::HTTP_UNPROCESSABLE_ENTITY;
 }

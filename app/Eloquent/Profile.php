@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Brewmap\Eloquent;
 
 use Carbon\Carbon;
+use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * @property string $userId
@@ -31,13 +31,16 @@ class Profile extends Model
     /**
      * @psalm-suppress MissingThrowsDocblock
      */
-    public function setBirthdayAttribute($value): void
+    public function setBirthdayAttribute(string $value): void
     {
         $this->attributes["birthday"] = Carbon::parse($value);
     }
 
-    public function getAvatarPathAttribute($value): string
+    /**
+     * @psalm-suppress MissingThrowsDocblock
+     */
+    public function getAvatarPathAttribute(string $value): string
     {
-        return Storage::url($value);
+        return app()->make(Filesystem::class)->url($value);
     }
 }
