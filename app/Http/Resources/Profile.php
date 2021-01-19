@@ -17,11 +17,11 @@ class Profile extends JsonResource
         $profile = $this->resource;
 
         return [
-            "data" =>[
+            "data" => [
                 "public_name" => $profile->publicName,
                 "avatar_path" => $profile->avatarPath,
                 "birthday" => $profile->birthday,
-            ]
+            ],
         ];
     }
 }
