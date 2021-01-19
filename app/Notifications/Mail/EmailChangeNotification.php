@@ -2,53 +2,32 @@
 
 declare(strict_types=1);
 
-namespace Brewmap\Notifications;
+namespace Brewmap\Notifications\Mail;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Brewmap\Notifications\MailNotification;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\URL;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
-class EmailChangeNotification extends Notification implements ShouldQueue
+class EmailChangeNotification extends MailNotification
 {
-    use Queueable;
-
-    /**
-     * The user Email
-     */
     protected string $userId;
+    protected string $verifyUrl;
+    protected Object $time;
 
-    /**
-     * Create a new notification instance.
-     */
     public function __construct(string $userId)
     {
         $this->userId = $userId;
+        $this->time = config("constants.notification.time_to_change_email");
     }
 
     /**
-     * Get the notification's delivery channels.
-     *
      * @param mixed $notifiable
-     * @return array
      */
-    public function via($notifiable)
-    {
-        return ["mail"];
-    }
-
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param mixed $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
+    public function toMail($notifiable): MailMessage
     {
         return (new MailMessage())
             ->line("Accept confirmation of changing email address!")
@@ -57,15 +36,15 @@ class EmailChangeNotification extends Notification implements ShouldQueue
     }
 
     /**
-     * Returns the Reset URl to send in the Email
-     *
      * @return string
      */
     protected function verifyRoute(AnonymousNotifiable $notifiable)
     {
-        return URL::temporarySignedRoute("api.email.change", now()->addMinutes(90), [
+        $this->verifyUrl = URL::temporarySignedRoute("api.email.change", $this->time, [
             "user" => $this->userId,
             "email" => $notifiable->routes["mail"],
         ]);
+
+        return $this->verifyUrl;
     }
 }

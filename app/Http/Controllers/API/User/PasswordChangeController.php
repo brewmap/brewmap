@@ -13,14 +13,13 @@ use Illuminate\Http\JsonResponse;
 class PasswordChangeController extends Controller
 {
     /**
-     * Update the user password with cofirmation old password.
-     *
      * @throws OldPasswordMismatchException
      */
     public function update(UpdatePasswordRequest $request, UpdatePasswordService $service): JsonResponse
     {
         $service->updatePassword($request->validated());
-        return response()->json([
+
+        return new JsonResponse([
             "message" => __("profile.password_updated"),
         ]);
     }

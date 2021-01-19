@@ -6,8 +6,7 @@ namespace Brewmap\Services;
 
 use Brewmap\Eloquent\User;
 use Brewmap\Exceptions\User\NewEmailChangingException;
-use Brewmap\Notifications\EmailChangeNotification;
-use Illuminate\Support\Facades\Auth;
+use Brewmap\Notifications\Mail\EmailChangeNotification;
 use Illuminate\Support\Facades\Notification;
 
 class UpdateEmailService
@@ -15,10 +14,10 @@ class UpdateEmailService
     /**
      * Changes the user Email Address for a new one
      */
-    public function sendNotifyForNewEmail(string $email): void
+    public function sendNotifyForNewEmail(string $email, string $id): void
     {
         Notification::route("mail", $email)
-            ->notify(new EmailChangeNotification(auth()->user()->id));
+            ->notify(new EmailChangeNotification($id));
     }
 
     /**
@@ -41,7 +40,7 @@ class UpdateEmailService
      */
     public function checkEmailBeforeUpdate(String $email): void
     {
-        if (User::where("email", $email)->first() !== null) {
+        if (User::query()->where("email", $email)->first() !== null) {
             throw new NewEmailChangingException();
         }
     }

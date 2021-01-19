@@ -5,19 +5,28 @@ declare(strict_types=1);
 namespace Brewmap\Services;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class StoreFileService
 {
-    protected Object $file;
+    protected UploadedFile $file;
+    protected string $path;
 
     public function __construct(Request $request)
     {
         $this->file = $request->file("file");
     }
 
+    /**
+     * @return false|string
++   */
     public function storeFile(string $uploadFolder)
     {
-        $this->path = $this->file->store($uploadFolder, "public");
+        $this->path = $this->file->store($uploadFolder);
+
         return $this->path;
     }
 }

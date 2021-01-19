@@ -16,3 +16,5 @@ yarn-error.log
 /.composer
 /.psalm
 /.npm
+
+.vscode

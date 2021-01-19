@@ -9,27 +9,23 @@ use Brewmap\Http\Requests\Profile\UpdateProfileRequest;
 use Brewmap\Http\Resources\Profile as ProfileResource;
 use Brewmap\Services\UpdateProfileService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    /**
-     * Edit the specified resource in storage.
-     */
-
-    public function edit(): JsonResponse
+    public function edit(Request $request): JsonResponse
     {
-        return response()->json([
-            new ProfileResource(auth()->user()->profile),
-        ]);
+        return new JsonResponse(
+            new ProfileResource($request->user()->profile)
+        );
     }
 
-    /**
-     * Update the profile data in storage.
-     */
+
     public function update(UpdateProfileRequest $request, UpdateProfileService $service): JsonResponse
     {
         $service->updateProfileData($request->validated());
-        return response()->json([
+
+        return new JsonResponse([
             "message" => __("profile.profile_updated"),
         ]);
     }
