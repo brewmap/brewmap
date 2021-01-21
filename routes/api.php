@@ -19,7 +19,7 @@ $router->post("/login", [AuthenticationController::class, "login"]);
 $router->post("/register", [AuthenticationController::class, "register"]);
 
 $router->group([
-    "middleware" => "auth:sanctum",
+    "middleware" => ["auth:sanctum"],
 ], function () use ($router): void {
     $router->get("/profile", [ProfileController::class, "edit"]);
     $router->patch("/profile", [ProfileController::class, "update"]);
