@@ -11,9 +11,6 @@ use Illuminate\Support\Facades\Notification;
 
 class UpdateEmailService
 {
-    /**
-     * Changes the user Email Address for a new one
-     */
     public function sendNotifyForNewEmail(string $email, string $id): void
     {
         Notification::route("mail", $email)
@@ -21,9 +18,7 @@ class UpdateEmailService
     }
 
     /**
-     * Update Email Address
-     *
-     * @throws NewEmailChangingException
+     * @psalm-suppress MissingThrowsDocblock
      */
     public function updateEmail(User $user, String $email): void
     {
@@ -34,8 +29,6 @@ class UpdateEmailService
     }
 
     /**
-     * Verify Email Address
-     *
      * @throws NewEmailChangingException
      */
     public function checkEmailBeforeUpdate(String $email): void

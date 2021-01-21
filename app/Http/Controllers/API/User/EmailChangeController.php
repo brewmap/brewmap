@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 class EmailChangeController extends Controller
 {
     /**
-     * @psalm-suppress MissingThrowsDocblock
+     * @throws
      */
     public function change(UpdateEmailRequest $request, UpdateEmailService $service): JsonResponse
     {
@@ -26,7 +26,7 @@ class EmailChangeController extends Controller
     }
 
     /**
-     * @psalm-suppress MissingThrowsDocblock
+     * @throws
      */
     public function verify(Request $request, User $user, string $email, UpdateEmailService $service): JsonResponse
     {
