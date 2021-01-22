@@ -7,25 +7,35 @@ namespace Brewmap\Services;
 use Brewmap\Eloquent\User;
 use Brewmap\Exceptions\User\NewEmailChangingException;
 use Brewmap\Notifications\Mail\EmailChangeNotification;
-use Illuminate\Support\Facades\Notification;
+use Illuminate\Notifications\AnonymousNotifiable;
 
 class UpdateEmailService
 {
+    protected AnonymousNotifiable $notify;
+
+    public function __construct(AnonymousNotifiable $notify)
+    {
+        $this->notify = $notify;
+    }
+
     public function sendNotifyForNewEmail(string $email, string $id): void
     {
-        Notification::route("mail", $email)
+        $this->notify
+            ->route("mail", $email)
             ->notify(new EmailChangeNotification($id));
     }
 
     /**
-     * @psalm-suppress MissingThrowsDocblock
+     * @throws NewEmailChangingException
      */
-    public function updateEmail(User $user, String $email): void
+    public function updateEmail(string $user_id, string $email): void
     {
         $this->checkEmailBeforeUpdate($email);
-        $user->update([
-            "email" => $email,
-        ]);
+        User::query()
+            ->where("id", $user_id)
+            ->update([
+                "email" => $email,
+            ]);
     }
 
     /**

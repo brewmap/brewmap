@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Brewmap\Http\Controllers\API\User;
 
-use Brewmap\Eloquent\User;
+use Brewmap\Exceptions\User\NewEmailChangingException;
 use Brewmap\Http\Controllers\Controller;
 use Brewmap\Http\Requests\User\UpdateEmailRequest;
 use Brewmap\Services\UpdateEmailService;
@@ -13,9 +13,6 @@ use Illuminate\Http\Request;
 
 class EmailChangeController extends Controller
 {
-    /**
-     * @throws
-     */
     public function change(UpdateEmailRequest $request, UpdateEmailService $service): JsonResponse
     {
         $service->sendNotifyForNewEmail($request->email, $request->user()->id);
@@ -26,11 +23,11 @@ class EmailChangeController extends Controller
     }
 
     /**
-     * @throws
+     * @throws NewEmailChangingException
      */
-    public function verify(Request $request, User $user, string $email, UpdateEmailService $service): JsonResponse
+    public function verify(Request $request, string $user_id, string $email, UpdateEmailService $service): JsonResponse
     {
-        $service->updateEmail($user, $email);
+        $service->updateEmail($user_id, $email);
 
         return new JsonResponse([
             "message" => __("profile.email_updated"),

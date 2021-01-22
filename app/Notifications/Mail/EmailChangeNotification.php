@@ -5,29 +5,28 @@ declare(strict_types=1);
 namespace Brewmap\Notifications\Mail;
 
 use Brewmap\Notifications\MailNotification;
+use Carbon\Carbon;
+use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Support\Facades\URL;
 
-/**
- * @psalm-suppress PropertyNotSetInConstructor
- */
 class EmailChangeNotification extends MailNotification
 {
     protected string $userId;
-    protected string $verifyUrl;
-    protected Object $time;
+    protected Carbon $time;
 
     public function __construct(string $userId)
     {
         $this->userId = $userId;
-        $this->time = config("constants.notification.time_to_change_email");
+        $this->time = Carbon::now()->addMinutes(config("notifications.email_change_timeout"));
     }
 
+
     /**
-     * @param mixed $notifiable
+     * @throws BindingResolutionException
      */
-    public function toMail($notifiable): MailMessage
+    public function toMail(AnonymousNotifiable $notifiable): MailMessage
     {
         return (new MailMessage())
             ->line("Accept confirmation of changing email address!")
@@ -36,15 +35,14 @@ class EmailChangeNotification extends MailNotification
     }
 
     /**
-     * @return string
+     * @throws BindingResolutionException
      */
-    protected function verifyRoute(AnonymousNotifiable $notifiable)
+    protected function verifyRoute(AnonymousNotifiable $notifiable): string
     {
-        $this->verifyUrl = URL::temporarySignedRoute("api.email.change", $this->time, [
-            "user" => $this->userId,
-            "email" => $notifiable->routes["mail"],
-        ]);
-
-        return $this->verifyUrl;
+        return app()->make(UrlGenerator::class)
+            ->temporarySignedRoute("api.email.change", $this->time, [
+                "user_id" => $this->userId,
+                "email" => $notifiable->routes["mail"],
+            ]);
     }
 }

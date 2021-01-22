@@ -20,7 +20,7 @@ $router->post("/register", [AuthenticationController::class, "register"]);
 
 $router->group([
     "middleware" => ["auth:sanctum"],
-], function () use ($router): void {
+], function (Router $router): void {
     $router->get("/profile", [ProfileController::class, "edit"]);
     $router->patch("/profile", [ProfileController::class, "update"]);
     $router->patch("/password", [PasswordChangeController::class, "update"]);
@@ -28,4 +28,4 @@ $router->group([
     $router->post("/avatar", [UploadAvatarController::class, "store"]);
 });
 
-$router->get("/email/{user}/{email}", [EmailChangeController::class, "verify"])->name("api.email.change")->middleware("signed");
+$router->get("/email/{user_id}/{email}", [EmailChangeController::class, "verify"])->name("api.email.change")->middleware("signed");

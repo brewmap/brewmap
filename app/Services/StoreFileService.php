@@ -21,9 +21,9 @@ class StoreFileService
     }
 
     /**
-     * @return false|string
+     * @return string
 +   */
-    public function storeFile(string $uploadFolder)
+    public function storeFile(string $uploadFolder): string
     {
         $this->path = $this->file->store($uploadFolder);
 
