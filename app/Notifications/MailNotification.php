@@ -6,11 +6,9 @@ namespace Brewmap\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Notification;
 
-/**
- * @psalm-suppress PropertyNotSetInConstructor
- */
 class MailNotification extends Notification implements ShouldQueue
 {
     use Queueable;
@@ -18,7 +16,7 @@ class MailNotification extends Notification implements ShouldQueue
     /**
      * @return array
      */
-    public function via(Object $notifiable)
+    public function via(AnonymousNotifiable $notifiable)
     {
         return ["mail"];
     }

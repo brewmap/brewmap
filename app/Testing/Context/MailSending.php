@@ -21,7 +21,7 @@ class MailSending implements Context
      */
     public function anEmailShouldBeSent(): void
     {
-        Notification::assertSentTo(new AnonymousNotifiable(), EmailChangeNotification::class, function ($notification, $channels, $notifiable) {
+        Notification::assertSentTo(new AnonymousNotifiable(), EmailChangeNotification::class, function (EmailChangeNotification $notification, array $channels, AnonymousNotifiable $notifiable) {
             return $notifiable->routes["mail"] === "new_email@example.com";
         });
     }

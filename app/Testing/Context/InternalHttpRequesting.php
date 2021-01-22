@@ -72,6 +72,17 @@ class InternalHttpRequesting implements Context
     }
 
     /**
+     * @Given response body :data should contain:
+     */
+    public function responseBodyDataShouldContain(TableNode $table, string $data): void
+    {
+        $response = $this->getResponseContent();
+        foreach ($table as $row) {
+            Assert::assertEquals($response[$data][$row["key"]], $row["value"]);
+        }
+    }
+
+    /**
      * @Then a response should be of type :type
      */
     public function responseShouldBeOfType(string $type): void

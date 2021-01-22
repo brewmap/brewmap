@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Brewmap\Http\Resources;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Profile extends JsonResource
 {
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      */
     public function toArray($request): array
     {

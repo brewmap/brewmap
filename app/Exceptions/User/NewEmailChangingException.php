@@ -9,6 +9,6 @@ use Illuminate\Http\Response;
 
 class NewEmailChangingException extends ApiException
 {
-    protected $message = "Please choose another email address.";
-    protected $code = Response::HTTP_UNPROCESSABLE_ENTITY;
+    protected $message = "You cannot choose privoded e-mail address.";
+    protected $code = Response::HTTP_CONFLICT;
 }

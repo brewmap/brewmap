@@ -15,9 +15,7 @@ class ProfileController extends Controller
 {
     public function edit(Request $request): JsonResponse
     {
-        return new JsonResponse(
-            new ProfileResource($request->user()->profile)
-        );
+        return new JsonResponse(new ProfileResource($request->user()->profile));
     }
 
 

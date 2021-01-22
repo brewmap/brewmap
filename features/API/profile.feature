@@ -23,11 +23,25 @@ Feature: Test an ability to update profile data
     And response body should contain:
       | message | Successfully updated profile data |
 
-  Scenario: User is attempting to edit profile data
+  Scenario: User is attempting to update profile data and check updated data
+    Given user is logged in as "user@example.com"
+    And a user is requesting "api/profile" using "PATCH"
+    And request body contains "public_name" equal "John Doe"
+    And request body contains "birthday" equal "2000-01-01"
+    And request body contains "avatar_path" equal "path_to_file"
+    When a request is sent
+    Then a response status code should be "200"
+    And response body should contain:
+      | message | Successfully updated profile data |
+      
     Given user is logged in as "user@example.com"
     And a user is requesting "api/profile" using "GET"
     When a request is sent
     Then a response status code should be "200"
+    And response body "data" should contain:
+      | key         | value                 |
+      | public_name | John Doe              |
+      | avatar_path | /storage/path_to_file |
 
   Scenario: User is attempting to update profile data
     Given user is logged in as "user@example.com"

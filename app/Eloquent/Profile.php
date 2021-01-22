@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Brewmap\Eloquent;
 
 use Carbon\Carbon;
+use Carbon\Exceptions\InvalidFormatException;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -29,7 +31,7 @@ class Profile extends Model
     }
 
     /**
-     * @psalm-suppress MissingThrowsDocblock
+     * @throws InvalidFormatException
      */
     public function setBirthdayAttribute(string $value): void
     {
@@ -37,7 +39,8 @@ class Profile extends Model
     }
 
     /**
-     * @psalm-suppress MissingThrowsDocblock
+     * @throws \RuntimeException
+     * @throws BindingResolutionException
      */
     public function getAvatarPathAttribute(string $value): string
     {
