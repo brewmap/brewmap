@@ -9,6 +9,7 @@ use Carbon\Exceptions\InvalidFormatException;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use RuntimeException;
 
 /**
  * @property string $userId
@@ -39,7 +40,7 @@ class Profile extends Model
     }
 
     /**
-     * @throws \RuntimeException
+     * @throws RuntimeException
      * @throws BindingResolutionException
      */
     public function getAvatarPathAttribute(string $value): string

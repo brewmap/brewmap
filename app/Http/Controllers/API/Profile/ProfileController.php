@@ -13,11 +13,10 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function edit(Request $request): JsonResponse
+    public function get(Request $request): JsonResponse
     {
         return new JsonResponse(new ProfileResource($request->user()->profile));
     }
-
 
     public function update(UpdateProfileRequest $request, UpdateProfileService $service): JsonResponse
     {

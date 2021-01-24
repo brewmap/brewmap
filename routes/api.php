@@ -21,7 +21,7 @@ $router->post("/register", [AuthenticationController::class, "register"]);
 $router->group([
     "middleware" => ["auth:sanctum"],
 ], function (Router $router): void {
-    $router->get("/profile", [ProfileController::class, "edit"]);
+    $router->get("/profile", [ProfileController::class, "get"]);
     $router->patch("/profile", [ProfileController::class, "update"]);
     $router->patch("/password", [PasswordChangeController::class, "update"]);
     $router->patch("/email", [EmailChangeController::class, "change"]);

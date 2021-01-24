@@ -13,10 +13,7 @@ class MailNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    /**
-     * @return array
-     */
-    public function via(AnonymousNotifiable $notifiable)
+    public function via(AnonymousNotifiable $notifiable): array
     {
         return ["mail"];
     }
