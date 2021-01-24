@@ -11,16 +11,16 @@ use Illuminate\Notifications\AnonymousNotifiable;
 
 class UpdateEmailService
 {
-    protected AnonymousNotifiable $notify;
+    protected AnonymousNotifiable $anonymousNotifiable;
 
-    public function __construct(AnonymousNotifiable $notify)
+    public function __construct(AnonymousNotifiable $anonymousNotifiable)
     {
-        $this->notify = $notify;
+        $this->anonymousNotifiable = $anonymousNotifiable;
     }
 
-    public function sendNotifyForNewEmail(string $email, string $id): void
+    public function notifyAboutNewEmail(string $email, string $id): void
     {
-        $this->notify
+        $this->anonymousNotifiable
             ->route("mail", $email)
             ->notify(new EmailChangeNotification($id));
     }
@@ -41,9 +41,9 @@ class UpdateEmailService
     /**
      * @throws NewEmailChangingException
      */
-    public function checkEmailBeforeUpdate(String $email): void
+    public function checkEmailBeforeUpdate(string $email): void
     {
-        if (User::query()->where("email", $email)->first() !== null) {
+        if (User::query()->where("email", $email)->exists()) {
             throw new NewEmailChangingException();
         }
     }

@@ -15,7 +15,7 @@ class EmailChangeController extends Controller
 {
     public function change(UpdateEmailRequest $request, UpdateEmailService $service): JsonResponse
     {
-        $service->sendNotifyForNewEmail($request->email, $request->user()->id);
+        $service->notifyAboutNewEmail($request->email, $request->user()->id);
 
         return new JsonResponse([
             "message" => __("profile.notification_new_email"),

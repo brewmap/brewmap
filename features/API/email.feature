@@ -25,6 +25,7 @@ Feature: Test an ability to update user email address data
 
   Scenario: User is attempting to update email address with successfully sended notification on new email address
     Given user is logged in as "user@example.com"
+    And NotificationFake is mocked for notification test
     And a user is requesting "api/email" using "PATCH"
     And request body contains "email" equal "new_email@example.com"
     When a request is sent

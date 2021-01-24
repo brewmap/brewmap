@@ -4,28 +4,22 @@ declare(strict_types=1);
 
 namespace Brewmap\Services;
 
-use Illuminate\Http\Request;
+use Brewmap\Contracts\StoreFile;
 use Illuminate\Http\UploadedFile;
 
 /**
- * @psalm-suppress PropertyNotSetInConstructor
+ * @psalm-suppress MissingConstructor
  */
-class StoreFileService
+class StoreFileService implements StoreFile
 {
-    protected UploadedFile $file;
     protected string $path;
-
-    public function __construct(Request $request)
-    {
-        $this->file = $request->file("file");
-    }
 
     /**
      * @return string
 +   */
-    public function storeFile(string $uploadFolder): string
+    public function storeFile(string $uploadFolder, UploadedFile $file): string
     {
-        $this->path = $this->file->store($uploadFolder);
+        $this->path = $file->store($uploadFolder);
 
         return $this->path;
     }

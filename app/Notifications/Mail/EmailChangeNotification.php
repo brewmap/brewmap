@@ -22,7 +22,6 @@ class EmailChangeNotification extends MailNotification
         $this->time = Carbon::now()->addMinutes(config("notifications.email_change_timeout"));
     }
 
-
     /**
      * @throws BindingResolutionException
      */

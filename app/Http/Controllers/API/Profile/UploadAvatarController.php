@@ -18,7 +18,7 @@ class UploadAvatarController extends Controller
 
     public function store(UpdateProfileAvatarRequest $request, StoreFileService $service): JsonResponse
     {
-        $this->pathToAvatar = $service->storeFile("users");
+        $this->pathToAvatar = $service->storeFile("users", $request->file("file"));
 
         return new JsonResponse([
             "path_to_file" => $this->pathToAvatar,
