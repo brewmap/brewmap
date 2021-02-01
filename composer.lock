@@ -1492,6 +1492,9 @@
                 "admin",
                 "laravel"
             ],
+            "support": {
+                "source": "https://github.com/laravel/nova/tree/v3.19.1"
+            },
             "time": "2021-01-06T09:22:32+00:00"
         },
         {
@@ -1621,16 +1624,16 @@
         },
         {
             "name": "laravel/telescope",
-            "version": "v4.4.0",
+            "version": "v4.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/telescope.git",
-                "reference": "535889a7585c331854dbdf8ca5e66209588408dd"
+                "reference": "c21b0e38c3e1e7f12a391eb97f092de1d1f2bdd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/telescope/zipball/535889a7585c331854dbdf8ca5e66209588408dd",
-                "reference": "535889a7585c331854dbdf8ca5e66209588408dd",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/c21b0e38c3e1e7f12a391eb97f092de1d1f2bdd8",
+                "reference": "c21b0e38c3e1e7f12a391eb97f092de1d1f2bdd8",
                 "shasum": ""
             },
             "require": {
@@ -1677,7 +1680,7 @@
                 "laravel",
                 "monitoring"
             ],
-            "time": "2020-12-15T19:19:38+00:00"
+            "time": "2021-01-26T20:11:13+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -5529,16 +5532,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v5.2.1",
+            "version": "v5.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "13e7e882eaa55863faa7c4ad7c60f12f1a8b5089"
+                "reference": "72ca213014a92223a5d18651ce79ef441c12b694"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/13e7e882eaa55863faa7c4ad7c60f12f1a8b5089",
-                "reference": "13e7e882eaa55863faa7c4ad7c60f12f1a8b5089",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/72ca213014a92223a5d18651ce79ef441c12b694",
+                "reference": "72ca213014a92223a5d18651ce79ef441c12b694",
                 "shasum": ""
             },
             "require": {
@@ -5554,7 +5557,7 @@
                 "ext-iconv": "*",
                 "symfony/console": "^4.4|^5.0",
                 "symfony/process": "^4.4|^5.0",
-                "twig/twig": "^2.4|^3.0"
+                "twig/twig": "^2.13|^3.0.4"
             },
             "suggest": {
                 "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
@@ -5590,7 +5593,7 @@
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Symfony mechanism for exploring and dumping PHP variables",
+            "description": "Provides mechanisms for walking through any arbitrary PHP variable",
             "homepage": "https://symfony.com",
             "keywords": [
                 "debug",
@@ -5610,7 +5613,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-16T17:02:19+00:00"
+            "time": "2021-01-27T10:15:41+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -5812,12 +5815,12 @@
             "version": "1.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
