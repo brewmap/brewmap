@@ -7,7 +7,7 @@ namespace Brewmap\Http\Controllers\API\Profile;
 use Brewmap\Http\Controllers\Controller;
 use Brewmap\Http\Requests\Profile\UpdateProfileRequest;
 use Brewmap\Http\Resources\Profile as ProfileResource;
-use Brewmap\Services\UpdateProfileService;
+use Brewmap\Services\Profile\UpdateProfileService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 

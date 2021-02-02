@@ -23,7 +23,6 @@ use RuntimeException;
 class Profile extends Model
 {
     protected $primaryKey = "user_id";
-
     protected $fillable = ["public_name", "avatar_path", "birthday"];
 
     public function user(): BelongsTo

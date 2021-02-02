@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Brewmap\Services;
+namespace Brewmap\Services\Profile;
 
 use Illuminate\Contracts\Auth\Guard;
 

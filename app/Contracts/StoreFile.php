@@ -8,5 +8,5 @@ use Illuminate\Http\UploadedFile;
 
 interface StoreFile
 {
-    public function storeFile(string $uploadFolder, UploadedFile $file);
+    public function storeFile(string $uploadFolder, UploadedFile $file): string;
 }

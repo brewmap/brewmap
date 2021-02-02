@@ -32,4 +32,4 @@ Feature: Test an ability to update user email address data
     Then a response status code should be "200"
     And response body should contain:
       | message | Notification successfully sended for your new email |
-    And an email should be sent
+    And an email should be sent to "new_email@example.com"

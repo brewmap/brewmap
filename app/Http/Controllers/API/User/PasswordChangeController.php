@@ -7,7 +7,7 @@ namespace Brewmap\Http\Controllers\API\User;
 use Brewmap\Exceptions\User\OldPasswordMismatchException;
 use Brewmap\Http\Controllers\Controller;
 use Brewmap\Http\Requests\User\UpdatePasswordRequest;
-use Brewmap\Services\UpdatePasswordService;
+use Brewmap\Services\User\UpdatePasswordService;
 use Illuminate\Http\JsonResponse;
 
 class PasswordChangeController extends Controller
@@ -17,7 +17,7 @@ class PasswordChangeController extends Controller
      */
     public function update(UpdatePasswordRequest $request, UpdatePasswordService $service): JsonResponse
     {
-        $service->updatePassword($request->validated());
+        $service->index($request->get("old_password"), $request->get("password"), $request->user());
 
         return new JsonResponse([
             "message" => __("profile.password_updated"),
