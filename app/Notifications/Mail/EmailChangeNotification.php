@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Brewmap\Notifications\Mail;
 
+use Brewmap\Eloquent\User;
 use Brewmap\Notifications\MailNotification;
 use Carbon\Carbon;
 use Illuminate\Contracts\Container\BindingResolutionException;
@@ -13,12 +14,12 @@ use Illuminate\Notifications\Messages\MailMessage;
 
 class EmailChangeNotification extends MailNotification
 {
-    protected string $userId;
+    protected User $user;
     protected Carbon $time;
 
-    public function __construct(string $userId)
+    public function __construct(User $user)
     {
-        $this->userId = $userId;
+        $this->user = $user;
         $this->time = Carbon::now()->addMinutes(config("notifications.email_change_timeout"));
     }
 
@@ -40,7 +41,7 @@ class EmailChangeNotification extends MailNotification
     {
         return app()->make(UrlGenerator::class)
             ->temporarySignedRoute("api.email.change", $this->time, [
-                "user_id" => $this->userId,
+                "user" => $this->user,
                 "email" => $notifiable->routes["mail"],
             ]);
     }

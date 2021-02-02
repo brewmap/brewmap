@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Brewmap\Services;
+namespace Brewmap\Services\User;
 
 use Brewmap\Eloquent\User;
 use Brewmap\Exceptions\User\NewEmailChangingException;
@@ -18,24 +18,22 @@ class UpdateEmailService
         $this->anonymousNotifiable = $anonymousNotifiable;
     }
 
-    public function notifyAboutNewEmail(string $email, string $id): void
+    public function notifyAboutNewEmail(User $user, string $email): void
     {
         $this->anonymousNotifiable
             ->route("mail", $email)
-            ->notify(new EmailChangeNotification($id));
+            ->notify(new EmailChangeNotification($user));
     }
 
     /**
      * @throws NewEmailChangingException
      */
-    public function updateEmail(string $user_id, string $email): void
+    public function updateEmail(User $user, string $email): void
     {
         $this->checkEmailBeforeUpdate($email);
-        User::query()
-            ->where("id", $user_id)
-            ->update([
-                "email" => $email,
-            ]);
+        $user->update([
+            "email" => $email,
+        ]);
     }
 
     /**

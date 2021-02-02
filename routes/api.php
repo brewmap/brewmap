@@ -28,4 +28,4 @@ $router->group([
     $router->post("/avatar", [UploadAvatarController::class, "store"]);
 });
 
-$router->get("/email/{user_id}/{email}", [EmailChangeController::class, "verify"])->name("api.email.change")->middleware("signed");
+$router->get("/email/{user}/{email}", [EmailChangeController::class, "verify"])->name("api.email.change")->middleware("signed");
