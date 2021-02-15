@@ -1625,16 +1625,16 @@
         },
         {
             "name": "laravel/telescope",
-            "version": "v4.4.0",
+            "version": "v4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/telescope.git",
-                "reference": "535889a7585c331854dbdf8ca5e66209588408dd"
+                "reference": "bb2b733a8ac5c8e5da8a935e15db5624ed998de9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/telescope/zipball/535889a7585c331854dbdf8ca5e66209588408dd",
-                "reference": "535889a7585c331854dbdf8ca5e66209588408dd",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/bb2b733a8ac5c8e5da8a935e15db5624ed998de9",
+                "reference": "bb2b733a8ac5c8e5da8a935e15db5624ed998de9",
                 "shasum": ""
             },
             "require": {
@@ -1681,7 +1681,7 @@
                 "laravel",
                 "monitoring"
             ],
-            "time": "2020-12-15T19:19:38+00:00"
+            "time": "2021-02-09T16:47:39+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -5540,7 +5540,7 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v5.2.2",
+            "version": "v5.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
