@@ -20,10 +20,13 @@ class UpdatePasswordService
     /**
      * @throws OldPasswordMismatchException
      */
-    public function index(string $oldPassword, string $newPassword, User $user): void
+    public function updatePassword(string $oldPassword, string $newPassword, User $user): void
     {
         $this->checkOldPassword($oldPassword, $user);
-        $this->updatePassword($newPassword, $user);
+
+        $user->update([
+            "password" => $this->hash->make($newPassword),
+        ]);
     }
 
     /**
@@ -34,12 +37,5 @@ class UpdatePasswordService
         if (!$this->hash->check($oldPassword, $user->password)) {
             throw new OldPasswordMismatchException();
         }
-    }
-
-    public function updatePassword(string $newPassword, User $user): void
-    {
-        $user->update([
-            "password" => $this->hash->make($newPassword),
-        ]);
     }
 }
