@@ -17,7 +17,7 @@ class PasswordChangeController extends Controller
      */
     public function update(UpdatePasswordRequest $request, UpdatePasswordService $service): JsonResponse
     {
-        $service->index($request->get("old_password"), $request->get("password"), $request->user());
+        $service->updatePassword($request->get("old_password"), $request->get("password"), $request->user());
 
         return new JsonResponse([
             "message" => __("profile.password_updated"),
