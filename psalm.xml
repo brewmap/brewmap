@@ -26,6 +26,7 @@
     <issueHandlers>
         <PropertyNotSetInConstructor>
             <errorLevel type="suppress">
+                <file name="app/Services/Profile/StoreFileService.php"/>
                 <directory name="app/Nova/Metrics"/>
                 <directory name="app/Http/Requests/"/>
                 <directory name="app/Nova/Tools"/>

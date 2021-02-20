@@ -7,9 +7,6 @@ namespace Brewmap\Services\Profile;
 use Brewmap\Contracts\StoreFile;
 use Illuminate\Http\UploadedFile;
 
-/**
- * @psalm-suppress MissingConstructor
- */
 class StoreFileService implements StoreFile
 {
     protected string $path;
