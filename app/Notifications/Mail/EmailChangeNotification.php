@@ -15,12 +15,12 @@ use Illuminate\Notifications\Messages\MailMessage;
 class EmailChangeNotification extends MailNotification
 {
     protected User $user;
-    protected Carbon $time;
+    protected Carbon $timeout;
 
     public function __construct(User $user)
     {
         $this->user = $user;
-        $this->time = Carbon::now()->addMinutes(config("notifications.email_change_timeout"));
+        $this->timeout = Carbon::now()->addMinutes(config("notifications.email_change_timeout"));
     }
 
     /**
@@ -40,7 +40,7 @@ class EmailChangeNotification extends MailNotification
     protected function verifyRoute(AnonymousNotifiable $notifiable): string
     {
         return app()->make(UrlGenerator::class)
-            ->temporarySignedRoute("api.email.change", $this->time, [
+            ->temporarySignedRoute("api.email.change", $this->timeout, [
                 "user" => $this->user,
                 "email" => $notifiable->routes["mail"],
             ]);
