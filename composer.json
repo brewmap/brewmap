@@ -36,7 +36,7 @@
     "nunomaduro/collision": "^5.0",
     "phpunit/phpunit": "^9.5",
     "psalm/plugin-laravel": "^1.4",
-    "symplify/easy-coding-standard": "^9.0",
+    "symplify/easy-coding-standard": "^9.1",
     "vimeo/psalm": "^4.0.0"
   },
   "config": {
