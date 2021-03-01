@@ -3,11 +3,11 @@ version: "3.7"
 services:
   php:
     container_name: brewmap-php
-    image: ghcr.io/brewmap/brewmap-php:0.1.0
+    image: ghcr.io/brewmap/brewmap-php:0.2.1
     user: ${CURRENT_UID}
     working_dir: /application
     volumes:
-      - .:/application
+      - .:/application:z
     restart: always
 
   web:
@@ -15,7 +15,7 @@ services:
     image: nginx:alpine
     working_dir: /application
     volumes:
-      - .:/application
+      - .:/application:z
       - ./environment/nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
       - "${EXT_WEBSERVER_PORT}:80"
