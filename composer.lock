@@ -9330,7 +9330,6 @@
             ],
             "support": {
                 "issues": "https://github.com/phpspec/prophecy/issues",
-
                 "source": "https://github.com/phpspec/prophecy/tree/1.12.2"
             },
             "time": "2020-12-19T10:15:11+00:00"
