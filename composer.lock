@@ -9789,6 +9789,7 @@
                 "squizlabs/php_codesniffer": "*",
                 "weirdan/codeception-psalm-module": "^0.13.1"
             },
+            "default-branch": true,
             "type": "psalm-plugin",
             "extra": {
                 "branch-alias": {
